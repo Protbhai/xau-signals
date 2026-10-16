@@ -22,6 +22,14 @@ on:
         description: "fetch even outside the session window"
         type: boolean
         default: false
+      session_start:
+        description: "TEST ONLY: override session start HH:MM IST"
+        type: string
+        default: ""
+      session_end:
+        description: "TEST ONLY: override session end HH:MM IST"
+        type: string
+        default: ""
 concurrency:
   group: xau-run
   cancel-in-progress: false
@@ -37,6 +45,8 @@ jobs:
       XAU_TWELVEDATA_KEY: ${{ secrets.XAU_TWELVEDATA_KEY }}
       XAU_MODE: ${{ vars.XAU_MODE || 'paper' }}
       XAU_PROVIDER: ${{ vars.XAU_PROVIDER }}
+      XAU_SESSION_START: ${{ inputs.session_start }}
+      XAU_SESSION_END: ${{ inputs.session_end }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

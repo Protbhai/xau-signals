@@ -41,6 +41,13 @@ def load_settings(config_path: str | os.PathLike | None = None, root: str | os.P
     mode = os.environ.get("XAU_MODE", "paper").strip().lower()
     if mode not in ("paper", "live"):
         raise ValueError(f"XAU_MODE must be paper or live, got {mode!r}")
+    # Test-only overrides of the session window (HH:MM IST). Production leaves these unset.
+    for env_key, cfg_key in (("XAU_SESSION_START", "start"), ("XAU_SESSION_END", "end")):
+        v = os.environ.get(env_key, "").strip()
+        if v:
+            if len(v) != 5 or v[2] != ":" or not (v[:2] + v[3:]).isdigit():
+                raise ValueError(f"{env_key} must be HH:MM, got {v!r}")
+            raw.setdefault("session", {})[cfg_key] = v
     return Settings(
         raw=raw,
         root=root_p,
