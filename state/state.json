@@ -4,7 +4,7 @@
   "last_slot_lag_s": 36,
   "last_slot_run": "2e32e5cbeb"
  },
- "run_id": "2e32e5cbeb",
+ "run_id": "10685a14d4",
  "runs": [
   {
    "alert_action": "none",
@@ -107,6 +107,19 @@
    "started_at": "2026-10-16T17:55:36.372089+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "slot 1792173300 already handled by run 2e32e5cbeb"
+   ],
+   "run_id": "10685a14d4",
+   "started_at": "2026-10-16T17:55:55.281340+00:00",
+   "state": "DUPLICATE_SLOT",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -118,5 +131,5 @@
   "seen_setup_ids": [],
   "session_date": "2026-10-16"
  },
- "updated_at": "2026-10-16T17:55:36.372519+00:00"
+ "updated_at": "2026-10-16T17:55:55.281698+00:00"
 }
