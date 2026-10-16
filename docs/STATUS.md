@@ -37,3 +37,16 @@
 
 Code tests pass and the pipeline is proven once end to end. Strategy validity on the live series
 (paper period), scheduler cadence and delivery reliability over time are still unmeasured. Promotion criteria: `docs/DESIGN.md`.
+
+## Incident 16 Oct 23:50 IST (evening pipeline test)
+
+First paper alert (DOWN pullback, trigger 4163.53) was delivered to Telegram, but the run's
+`state.json`/tracking commit was lost: the external pinger (running round the clock, unrestricted)
+had committed `state.json` seconds earlier, `git pull --rebase` conflicted and the retry loop could
+not recover. Effect: the alert record (and a 23:45 "forming" decision) vanished from the repo, which
+breaks at-most-once accounting if a setup were still live. No duplicate was sent (the setup expired
+at 00:20 IST and the session date rolled). Fixes pushed: (1) a skipped run never consumes the 5-minute
+slot; (2) persist step keeps this run's `state.json` on conflict, merges append-only logs by union,
+and fails the job loudly if the push still fails. Residual risk: two *effective* runs in one slot on
+different runners can still race; the GitHub concurrency group serialises jobs, and the pinger's
+schedule must be restricted to the session window. Verify on the next double-trigger slot.
