@@ -61,11 +61,36 @@ jobs:
       - name: persist state
         shell: bash
         run: |
+          # This run's state.json is authoritative (one effective check per slot); the append-only
+          # tracking logs are merged by union. A lost push would break at-most-once, so it fails the job.
           git config user.name "xau-bot"
           git config user.email "xau-bot@users.noreply.github.com"
-          git add state/state.json data/tracking/ 2>/dev/null || true
-          git commit -q -m "state: $(date -u +%FT%TZ) ${{ github.event_name }}" || exit 0
-          for i in 1 2 3; do git pull --rebase -q && git push -q && break || sleep 5; done
+          mkdir -p /tmp/ours/tracking
+          cp state/state.json /tmp/ours/state.json 2>/dev/null || true
+          cp data/tracking/*.jsonl /tmp/ours/tracking/ 2>/dev/null || true
+          msg="state: $(date -u +%FT%TZ) ${{ github.event_name }}"
+          for i in 1 2 3 4 5; do
+            git add -A state/ data/tracking/ 2>/dev/null || true
+            git commit -q -m "$msg" || true
+            if ! git pull --rebase -q; then
+              git rebase --abort 2>/dev/null || true
+              git fetch -q origin main
+              git reset -q --hard origin/main
+              [ -f /tmp/ours/state.json ] && mkdir -p state && cp /tmp/ours/state.json state/state.json
+              mkdir -p data/tracking
+              for f in /tmp/ours/tracking/*.jsonl; do
+                [ -f "$f" ] || continue
+                b=$(basename "$f")
+                if [ -f "data/tracking/$b" ]; then cat "data/tracking/$b" "$f" | awk '!seen[$0]++' > /tmp/merged && mv /tmp/merged "data/tracking/$b"; else cp "$f" "data/tracking/$b"; fi
+              done
+              git add -A state/ data/tracking/ 2>/dev/null || true
+              git commit -q -m "$msg (merged)" || true
+            fi
+            if git push -q; then echo "state pushed (attempt $i)"; exit 0; fi
+            sleep $((3 * i))
+          done
+          echo "::error::state push failed after 5 attempts; this run's alert record may be lost"
+          exit 1
   outcomes:
     if: github.event_name == 'schedule' && contains(github.event.schedule, '9 * * 1-5') && startsWith(github.event.schedule, '0,5')
     needs: check
