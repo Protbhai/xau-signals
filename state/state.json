@@ -1,10 +1,10 @@
 {
  "extra": {
-  "last_slot": 1792175100,
-  "last_slot_lag_s": 35,
-  "last_slot_run": "d090ad1b4a"
+  "last_slot": 1792175400,
+  "last_slot_lag_s": 53,
+  "last_slot_run": "aa431cd250"
  },
- "run_id": "b6827ab9ae",
+ "run_id": "aa431cd250",
  "runs": [
   {
    "alert_action": "none",
@@ -238,6 +238,20 @@
    "started_at": "2026-10-16T18:25:58.916914+00:00",
    "state": "DUPLICATE_SLOT",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "DOWN",
+   "fetched": true,
+   "in_session": true,
+   "notes": [],
+   "run_id": "aa431cd250",
+   "started_at": "2026-10-16T18:30:53.302059+00:00",
+   "state": "NO_SETUP",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=1853s fresh=True",
+    "5m": "XAU/USD@5m: 60/60 candles age=53s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -247,7 +261,7 @@
   "failure_alert_sent_for": [],
   "last_sent_at": null,
   "seen_setup_ids": [],
-  "session_date": "2026-10-16"
+  "session_date": "2026-10-17"
  },
- "updated_at": "2026-10-16T18:25:58.917124+00:00"
+ "updated_at": "2026-10-16T18:30:53.433553+00:00"
 }
