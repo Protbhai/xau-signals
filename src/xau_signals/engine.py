@@ -92,8 +92,18 @@ def run_once(
         st.run_id = run_id
         sess = store.ensure_session(st, sd)
 
+        # Pre-session warm-up: fetch from 15 min before the window so the first in-session check has fresh data.
+        pre = to_utc(datetime.combine(sd, spec.start, __import__("xau_signals.timeutil", fromlist=["IST"]).IST)) - timedelta(minutes=15)
+        should_fetch = force_fetch or insess or (pre <= now < pre + timedelta(minutes=15))
+        if not should_fetch or market_hours.is_closed(now):
+            # A skipped run must NOT consume the slot: another trigger in the same slot may be a real check.
+            summary.notes.append("outside session window (or market closed): no fetch, record only")
+            StateStore.record_run(st, summary.to_dict())
+            store.save(st)
+            return summary
+
         # Duplicate-trigger protection: two schedulers (GitHub cron + an external pinger) may both fire for
-        # the same 5-minute slot. The second one records itself and does nothing else.
+        # the same 5-minute slot. The second effective run records itself and does nothing else.
         slot_sec = int(settings.get("session", "slot_seconds", 300))
         slot = int(now.timestamp()) // slot_sec * slot_sec
         if not force_fetch and st.extra.get("last_slot") == slot:
@@ -104,15 +114,6 @@ def run_once(
             return summary
         st.extra["last_slot"], st.extra["last_slot_run"] = slot, run_id
         st.extra["last_slot_lag_s"] = int(now.timestamp()) - slot
-
-        # Pre-session warm-up: fetch from 15 min before the window so the first in-session check has fresh data.
-        pre = to_utc(datetime.combine(sd, spec.start, __import__("xau_signals.timeutil", fromlist=["IST"]).IST)) - timedelta(minutes=15)
-        should_fetch = force_fetch or insess or (pre <= now < pre + timedelta(minutes=15))
-        if not should_fetch or market_hours.is_closed(now):
-            summary.notes.append("outside session window (or market closed): no fetch, record only")
-            StateStore.record_run(st, summary.to_dict())
-            store.save(st)
-            return summary
 
         # ---- fetch + validate --------------------------------------------------
         bias_need, setup_need = _lookback_bars(sparams)

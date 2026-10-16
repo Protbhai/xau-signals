@@ -22,3 +22,18 @@ def test_second_trigger_in_same_slot_is_noop(tmp_path):
     r3 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=t + timedelta(minutes=5))
     assert r3.fetched and r3.state != "DUPLICATE_SLOT"
     assert store.load().extra["last_slot_lag_s"] == 20 + 300 - 300  # 10:35:20 -> 20 s into the slot
+
+
+def test_skipped_run_does_not_consume_slot(tmp_path):
+    anchor = ist(2026, 10, 13, 10, 25)
+    prov = FakeProvider(trending_1h(ist(2026, 10, 13, 9, 0)), trending_pullback_5m(anchor))
+    store, tracker = StateStore(tmp_path / "state"), Tracker(tmp_path / "track")
+    sender = PaperSender()
+    # Run A: settings whose window excludes 'now' => SKIPPED; must not mark the slot.
+    narrow = _settings(tmp_path, "paper", session={"start": "12:00", "end": "13:00"})
+    t = anchor + timedelta(minutes=5, seconds=20)
+    rA = run_once(narrow, provider=prov, sender=sender, store=store, tracker=tracker, now=t)
+    assert rA.state == "SKIPPED" and not rA.fetched
+    # Run B in the same slot with the normal window must still be a real check.
+    rB = run_once(_settings(tmp_path, "paper"), provider=prov, sender=sender, store=store, tracker=tracker, now=t + timedelta(seconds=30))
+    assert rB.fetched and rB.state != "DUPLICATE_SLOT" and rB.alert_action == "paper"
