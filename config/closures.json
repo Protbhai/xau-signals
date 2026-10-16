@@ -1,0 +1,8 @@
+{
+  "_note": "Dates (UTC calendar) on which the 03:30-09:30 UTC window has no spot-gold trading. Filled from docs/research/market-hours.md; UNVERIFIED until that report lands. Weekly closure (Fri 17:00 NY -> Sun 18:00 NY) and the daily 17:00-18:00 NY break are computed in code, not listed here.",
+  "closed": [
+    "2026-12-25",
+    "2027-01-01"
+  ],
+  "thin": []
+}

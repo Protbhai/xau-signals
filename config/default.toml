@@ -1,0 +1,43 @@
+# All times for the user are Asia/Kolkata (IST). Internals are UTC.
+
+[session]
+tz = "Asia/Kolkata"
+start = "09:00"          # inclusive
+end = "15:00"            # exclusive
+max_alerts_per_session = 3
+cooldown_minutes = 20    # after a SENT setup alert, no new setup alert for this long. Design choice (see docs/DESIGN.md), not optimised.
+closures_file = "config/closures.json"
+
+[data]
+# Provider chosen after docs/research/data-sources.md; the engine only needs the Provider interface.
+provider = "yahoo"
+symbol = "GC=F"           # placeholder until the data research lands; see docs/research/data-sources.md
+bias_interval = "1h"
+setup_interval = "5m"
+# A candle is "fresh" if its close time is within this many seconds of now; otherwise state = DATA_STALE.
+max_candle_age_seconds = 900
+# Unexplained gap tolerance inside an open market, in bars of the setup interval.
+max_unexplained_gap_bars = 1
+
+[strategy]
+name = "benchmark_v1"
+
+[strategy.benchmark_v1]
+bias_sma = 20
+bias_lookback_slope = 3
+setup_ema = 20
+atr_period = 14
+touch_tolerance_atr = 0.25
+expiry_bars = 6            # setup expires after this many setup-interval bars without a trigger
+stale_extension_atr = 1.0  # if price is already > this many ATR beyond the trigger, do not send (stale)
+invalidation_buffer_atr = 0.1
+
+[notify]
+telegram_timeout_seconds = 15
+telegram_max_retries = 2
+# Failure alerts (data unavailable for N consecutive checks inside session, delivery errors) go out in both modes.
+failure_alert_after_consecutive_data_failures = 3
+
+[state]
+dir = "state"
+lock_stale_seconds = 240

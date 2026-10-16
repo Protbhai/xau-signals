@@ -1,0 +1,2 @@
+[console_scripts]
+xau-signals = xau_signals.cli:main

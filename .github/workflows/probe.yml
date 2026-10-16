@@ -1,0 +1,46 @@
+# Infrastructure probe (temporary): measures real GitHub Actions cron lag and
+# reachability of data/notification endpoints from the runner. No secrets used.
+# Appends one CSV line per run to probe/log.csv and commits it.
+name: probe
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+concurrency:
+  group: probe
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: probe
+        id: p
+        shell: bash
+        run: |
+          start=$(date -u +%s)
+          slot=$(( start - start % 300 ))
+          lag=$(( start - slot ))
+          code() { curl -s -o /dev/null -w "%{http_code}" --max-time 15 "$1" || echo "err"; }
+          b=$(code "https://fapi.binance.com/fapi/v1/klines?symbol=XAUUSDT&interval=5m&limit=2")
+          y=$(code "https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF?interval=5m&range=1d" )
+          t=$(code "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=5min&outputsize=2")
+          s=$(code "https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/USD")
+          g=$(code "https://api.telegram.org/")
+          d=$(code "https://datafeed.dukascopy.com/datafeed/XAUUSD/2026/09/15/BID_candles_min_1.bi5")
+          mkdir -p probe
+          [ -f probe/log.csv ] || echo "run_start_utc,event,lag_from_5min_slot_s,binance,yahoo,twelvedata,swissquote,telegram,dukascopy,runner_ip_country" > probe/log.csv
+          country=$(curl -s --max-time 10 https://ipinfo.io/country || echo "?")
+          echo "$(date -u -d @$start +%FT%TZ),${{ github.event_name }},$lag,$b,$y,$t,$s,$g,$d,$country" >> probe/log.csv
+          tail -1 probe/log.csv
+      - name: commit
+        shell: bash
+        run: |
+          git config user.name "probe-bot"
+          git config user.email "probe-bot@users.noreply.github.com"
+          git add probe/log.csv
+          git commit -m "probe: $(date -u +%FT%TZ)" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break || sleep 5; done

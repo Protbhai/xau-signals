@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.key
+secrets/
+data/cache/
+data/raw/
+state/*.lock
+*.log
+.DS_Store

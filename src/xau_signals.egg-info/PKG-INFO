@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: xau-signals
+Version: 0.1.0
+Summary: XAU/USD direction-and-entry notification system (session 09:00-15:00 IST), built from scratch.
+Requires-Python: >=3.12
+Requires-Dist: requests>=2.31
+Requires-Dist: tzdata>=2024.1
+Provides-Extra: research
+Requires-Dist: numpy>=1.26; extra == "research"
+Requires-Dist: pandas>=2.1; extra == "research"
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: numpy>=1.26; extra == "dev"
+Requires-Dist: pandas>=2.1; extra == "dev"
