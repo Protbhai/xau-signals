@@ -17,7 +17,8 @@ from .tracking import Tracker
 
 
 def _provider(settings: Settings):
-    name = settings.get("data", "provider", "yahoo")
+    import os
+    name = os.environ.get("XAU_PROVIDER") or settings.get("data", "provider", "twelvedata")
     if name == "csv":
         from .providers.csvfile import CsvProvider
         files = settings.raw["data"]["csv_files"]
@@ -25,7 +26,19 @@ def _provider(settings: Settings):
     if name == "yahoo":
         from .providers.yahoo import YahooProvider
         return YahooProvider()
+    if name == "binance":
+        from .providers.binance import BinanceProvider
+        return BinanceProvider()
+    if name == "twelvedata":
+        from .providers.twelvedata import TwelveDataProvider
+        return TwelveDataProvider()
     raise SystemExit(f"unknown provider {name!r}")
+
+
+def _symbol(settings: Settings) -> str:
+    import os
+    name = os.environ.get("XAU_PROVIDER") or settings.get("data", "provider", "twelvedata")
+    return settings.raw["data"].get("symbols", {}).get(name) or settings.get("data", "symbol")
 
 
 def _sender(settings: Settings, log):
@@ -69,7 +82,7 @@ def cmd_outcomes(args, settings: Settings, log):
     tracker = Tracker(settings.path("data/tracking"))
     done = {o["setup_id"] for o in tracker.iter_outcomes()}
     provider = _provider(settings)
-    symbol = settings.get("data", "symbol")
+    symbol = _symbol(settings)
     iv = settings.get("data", "setup_interval", "5m")
     now = to_utc(now_utc())
     n = 0
@@ -118,7 +131,7 @@ def cmd_replay(args, settings: Settings, log):
 def cmd_fetch(args, settings: Settings, log):
     from .providers.csvfile import write_csv
     provider = _provider(settings)
-    symbol = args.symbol or settings.get("data", "symbol")
+    symbol = args.symbol or _symbol(settings)
     start = datetime.fromisoformat(args.start) if args.start else None
     end = datetime.fromisoformat(args.end) if args.end else None
     cs = provider.fetch(symbol=symbol, interval=args.interval, start=start, end=end, lookback_bars=args.bars)

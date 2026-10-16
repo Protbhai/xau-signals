@@ -5,18 +5,28 @@ tz = "Asia/Kolkata"
 start = "09:00"          # inclusive
 end = "15:00"            # exclusive
 max_alerts_per_session = 3
-cooldown_minutes = 20    # after a SENT setup alert, no new setup alert for this long. Design choice (see docs/DESIGN.md), not optimised.
+cooldown_minutes = 20    # after a SENT setup alert, no new setup alert for this long. Design choice (docs/DESIGN.md), not optimised.
+slot_seconds = 300       # duplicate-trigger protection: one effective run per 5-minute slot
 closures_file = "config/closures.json"
 
 [data]
-# Provider chosen after docs/research/data-sources.md; the engine only needs the Provider interface.
-provider = "yahoo"
-symbol = "GC=F"           # placeholder until the data research lands; see docs/research/data-sources.md
+# Provider for live runs; override with env XAU_PROVIDER. Decision: docs/research/data-sources.md + probe results.
+#   twelvedata : XAU/USD spot, real time, needs free key (XAU_TWELVEDATA_KEY); reachable from GitHub runners
+#   yahoo      : GC=F COMEX futures, ~10 min delayed, unofficial; fallback
+#   binance    : XAUUSDT perp, keyless, real time; GEO-BLOCKED (HTTP 451) from US-hosted runners -> research only
+provider = "twelvedata"
+symbol = "XAU/USD"
+[data.symbols]
+twelvedata = "XAU/USD"
+yahoo = "GC=F"
+binance = "XAUUSDT"
+
+[data.freshness]
+# (documented here; the engine reads the two keys below)
+[data]
 bias_interval = "1h"
 setup_interval = "5m"
-# A candle is "fresh" if its close time is within this many seconds of now; otherwise state = DATA_STALE.
-max_candle_age_seconds = 900
-# Unexplained gap tolerance inside an open market, in bars of the setup interval.
+max_candle_age_seconds = 900         # newest completed 5m candle must close within 15 min of the check
 max_unexplained_gap_bars = 1
 
 [strategy]
@@ -32,10 +42,40 @@ expiry_bars = 6            # setup expires after this many setup-interval bars w
 stale_extension_atr = 1.0  # if price is already > this many ATR beyond the trigger, do not send (stale)
 invalidation_buffer_atr = 0.1
 
+[strategy.breakout_retest_v1]
+range_minutes = 90
+atr_period = 14
+retest_tol_atr = 0.3
+expiry_bars = 6
+stale_extension_atr = 1.0
+invalidation_buffer_atr = 0.1
+min_range_atr = 1.0
+
+[strategy.range_rejection_v1]
+bias_sma = 20
+bias_lookback_slope = 3
+atr_period = 14
+range_band_atr = 0.75
+slope_atr = 0.25
+lookback_bars = 36
+expiry_bars = 6
+stale_extension_atr = 1.0
+invalidation_buffer_atr = 0.1
+
+[strategy.benchmark_ext_v1]
+bias_sma = 20
+bias_lookback_slope = 3
+setup_ema = 20
+atr_period = 14
+touch_tolerance_atr = 0.25
+expiry_bars = 6
+stale_extension_atr = 1.0
+invalidation_buffer_atr = 0.1
+max_ext_atr = 2.0
+
 [notify]
 telegram_timeout_seconds = 15
 telegram_max_retries = 2
-# Failure alerts (data unavailable for N consecutive checks inside session, delivery errors) go out in both modes.
 failure_alert_after_consecutive_data_failures = 3
 
 [state]

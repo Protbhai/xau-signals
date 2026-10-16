@@ -10,3 +10,5 @@ data/raw/
 state/*.lock
 *.log
 .DS_Store
+*.egg-info/
+probe/

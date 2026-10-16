@@ -75,7 +75,7 @@ def run_once(
     sname = settings.get("strategy", "name", "benchmark_v1")
     sparams = settings.raw.get("strategy", {}).get(sname, {})
     strat = strategy or make_strategy(sname, sparams)
-    symbol = settings.get("data", "symbol")
+    symbol = settings.raw["data"].get("symbols", {}).get(provider.name) or settings.get("data", "symbol")
     bias_iv = settings.get("data", "bias_interval", "1h")
     setup_iv = settings.get("data", "setup_interval", "5m")
     max_age = float(settings.get("data", "max_candle_age_seconds", 900))
@@ -90,6 +90,19 @@ def run_once(
         st = store.load()
         st.run_id = run_id
         sess = store.ensure_session(st, sd)
+
+        # Duplicate-trigger protection: two schedulers (GitHub cron + an external pinger) may both fire for
+        # the same 5-minute slot. The second one records itself and does nothing else.
+        slot_sec = int(settings.get("session", "slot_seconds", 300))
+        slot = int(now.timestamp()) // slot_sec * slot_sec
+        if not force_fetch and st.extra.get("last_slot") == slot:
+            summary.state = "DUPLICATE_SLOT"
+            summary.notes.append(f"slot {slot} already handled by run {st.extra.get('last_slot_run')}")
+            StateStore.record_run(st, summary.to_dict())
+            store.save(st)
+            return summary
+        st.extra["last_slot"], st.extra["last_slot_run"] = slot, run_id
+        st.extra["last_slot_lag_s"] = int(now.timestamp()) - slot
 
         # Pre-session warm-up: fetch from 15 min before the window so the first in-session check has fresh data.
         pre = to_utc(datetime.combine(sd, spec.start, __import__("xau_signals.timeutil", fromlist=["IST"]).IST)) - timedelta(minutes=15)

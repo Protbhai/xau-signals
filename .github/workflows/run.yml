@@ -1,0 +1,83 @@
+# Production runner (paper by default). One check per trigger; state and tracking
+# files are committed back so the next run sees them.
+#
+# Triggers:
+#   schedule         GitHub cron every 5 min, 03:15-09:40 UTC Mon-Fri (08:45-15:10 IST). GitHub's
+#                    scheduler is known to run late/skip under load; it is the BACKUP trigger.
+#   workflow_dispatch  primary trigger from an external pinger (cron-job.org) every 5 min, or manual.
+# The engine's slot check makes a second trigger in the same 5-minute slot a no-op.
+#
+# Secrets (repo Settings > Secrets and variables > Actions):
+#   XAU_TELEGRAM_BOT_TOKEN, XAU_TELEGRAM_CHAT_ID, XAU_TWELVEDATA_KEY
+# Variables: XAU_MODE (paper|live, default paper), XAU_PROVIDER (default from config)
+name: run
+on:
+  schedule:
+    - cron: "15,20,25,30,35,40,45,50,55 3 * * 1-5"
+    - cron: "*/5 4-8 * * 1-5"
+    - cron: "0,5,10,15,20,25,30,35,40 9 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "fetch even outside the session window"
+        type: boolean
+        default: false
+concurrency:
+  group: xau-run
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      XAU_TELEGRAM_BOT_TOKEN: ${{ secrets.XAU_TELEGRAM_BOT_TOKEN }}
+      XAU_TELEGRAM_CHAT_ID: ${{ secrets.XAU_TELEGRAM_CHAT_ID }}
+      XAU_TWELVEDATA_KEY: ${{ secrets.XAU_TWELVEDATA_KEY }}
+      XAU_MODE: ${{ vars.XAU_MODE || 'paper' }}
+      XAU_PROVIDER: ${{ vars.XAU_PROVIDER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q -e .
+      - name: check
+        run: |
+          echo "trigger=${{ github.event_name }} start=$(date -u +%FT%TZ)"
+          python -m xau_signals run ${{ inputs.force && '--force' || '' }} | tee run.out
+      - name: persist state
+        shell: bash
+        run: |
+          git config user.name "xau-bot"
+          git config user.email "xau-bot@users.noreply.github.com"
+          git add state/state.json data/tracking/ 2>/dev/null || true
+          git commit -q -m "state: $(date -u +%FT%TZ) ${{ github.event_name }}" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break || sleep 5; done
+  outcomes:
+    if: github.event_name == 'schedule' && contains(github.event.schedule, '9 * * 1-5') && startsWith(github.event.schedule, '0,5')
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      XAU_TWELVEDATA_KEY: ${{ secrets.XAU_TWELVEDATA_KEY }}
+      XAU_PROVIDER: ${{ vars.XAU_PROVIDER }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q -e .
+      - run: python -m xau_signals outcomes
+      - shell: bash
+        run: |
+          git config user.name "xau-bot"
+          git config user.email "xau-bot@users.noreply.github.com"
+          git add data/tracking/ 2>/dev/null || true
+          git commit -q -m "outcomes: $(date -u +%FT%TZ)" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break || sleep 5; done

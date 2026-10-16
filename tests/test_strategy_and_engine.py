@@ -107,7 +107,7 @@ def test_paper_mode_consumes_slot_and_never_calls_live_sender(tmp_path):
     assert r.alert_action == "paper" and sender.messages and sender.messages[0].startswith("[PAPER")
     assert "UP bias" in sender.messages[0] and "not a broker bid/ask" in sender.messages[0]
     # same check again => duplicate blocked
-    r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=1))
+    r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=5))
     assert r2.alert_action.startswith("blocked:duplicate")
     st = store.load()
     assert st.session.consumed() == 1 and len(list(tracker.iter_decisions())) == 2
@@ -132,7 +132,7 @@ def test_live_ambiguous_consumes_slot_and_is_not_resent(tmp_path):
     now = anchor + timedelta(minutes=5, seconds=20)
     r = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now)
     assert r.alert_action == "ambiguous"
-    r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=1))
+    r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=5))
     assert r2.alert_action.startswith("blocked:duplicate") and len(sender.sent) == 1
 
 
@@ -143,7 +143,7 @@ def test_live_failed_does_not_consume_slot(tmp_path):
     now = anchor + timedelta(minutes=5, seconds=20)
     r = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now)
     assert r.alert_action == "failed" and store.load().session.consumed() == 0
-    r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=1))
+    r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=5))
     assert r2.alert_action == "sent"
 
 
