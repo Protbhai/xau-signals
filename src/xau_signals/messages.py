@@ -23,7 +23,7 @@ def setup_alert(ev: Evaluation, setup: Setup, *, now: datetime, price_scope: str
         f"Invalid if: {setup_interval} close {inv_side} <b>{setup.invalidation:.2f}</b>",
         f"Checked {fmt_ist(now)} · setup candle {_hm(setup.anchor_ts)}–{_hm(a_close)} IST",
         f"Expires {_hm(setup.expires_at)} IST, or if price runs &gt;{stale_ext_atr:g} ATR (≈{stale_ext_atr * setup.atr:.2f}) past the trigger",
-        f"Ref: {price_scope} — not a broker bid/ask",
+        f"Ref: {price_scope}" + ("" if "broker" in price_scope else " — not a broker bid/ask"),
         f"Conditional observation, not a confirmed entry. Alert {n_sent}/{cap} · {strategy_tag}",
     ]
     return "\n".join(lines)

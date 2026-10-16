@@ -105,7 +105,7 @@ def test_paper_mode_consumes_slot_and_never_calls_live_sender(tmp_path):
     now = anchor + timedelta(minutes=5, seconds=20)
     r = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now)
     assert r.alert_action == "paper" and sender.messages and sender.messages[0].startswith("[PAPER")
-    assert "UP bias" in sender.messages[0] and "not a broker bid/ask" in sender.messages[0]
+    assert "UP bias" in sender.messages[0] and "not a broker" in sender.messages[0]
     # same check again => duplicate blocked
     r2 = run_once(settings, provider=prov, sender=sender, store=store, tracker=tracker, now=now + timedelta(minutes=5))
     assert r2.alert_action.startswith("blocked:duplicate")
