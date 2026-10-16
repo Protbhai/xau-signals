@@ -1,12 +1,16 @@
-# Status (16 Oct 2026, 22:30 IST)
+# Status (16 Oct 2026, 22:55 IST)
 
 ## Operational (built and tested)
 
 - Engine: fetch → validate → evaluate → gate → deliver → record. 51 automated tests pass
   (data integrity, session boundaries, 3-alert cap, dedup, cooldown, freshness, slot dedup,
   at-most-once delivery, failure alert, strategies, outcomes, replay).
-- Providers: Binance (research), Yahoo GC=F (fallback), Twelve Data (live; key not yet set),
-  CSV (research), Dukascopy downloader (research; blocked today).
+- Providers: Twelve Data XAU/USD (live, VERIFIED from GitHub 16 Oct 17:19Z: real-time 5m/1h, open-time UTC
+  stamps, no volume, 5000 bars/call), Binance (research), Yahoo GC=F (fallback), CSV (research),
+  Dukascopy downloader (research; blocked today).
+- Telegram delivery VERIFIED from GitHub (notify-test: ok=true, message_id 3). Secrets set: bot token,
+  chat id, Twelve Data key. XAU_MODE=paper.
+- Forced production run from GitHub with real data: fetch -> validate (fresh) -> NO_SETUP, state committed.
 - Replay backtester and comparison/analysis scripts; results in `docs/research/`.
 - Private repo `Protbhai/xau-signals`; production workflow `run.yml` in **paper** mode; probe
   workflow measuring scheduler lag and reachability (time-boxed, every 15 min).
@@ -21,16 +25,15 @@
 
 ## Unverified / open
 
-- Twelve Data free plan: does it serve XAU/USD 5min/1h, and how are candles stamped? Needs the
-  owner's free key. Until then every production run records `DATA_UNAVAILABLE`.
-- Real scheduler cadence on GitHub (probe running; first dispatch-to-run lag 97 s) and the
-  external pinger path (needs the owner's cron-job.org setup).
-- Telegram delivery on the owner's phone (needs bot token + chat id as repo secrets).
+- Real scheduler cadence: GitHub cron fired 0 times in its first 17 min (probe continues over the
+  weekend); dispatch-to-run lag 97 s and 23 s observed. The external pinger (cron-job.org) still needs
+  the owner's fine-grained GitHub token in the job header.
+- Telegram delivery on the owner's phone: API confirmed; owner to confirm it arrived.
 - Spot robustness check on Dukascopy (download throttled/503 on 16 Oct; retry slowly).
 - Holiday calendar in `config/closures.json` (research report pending; two dates placeholder).
 - Costs (spread/slippage) for the owner's broker: unverified; sensitivity only.
 
 ## Not ready for live alerts
 
-Code tests pass, but strategy validity on the live series, data freshness in production and
-delivery reliability are all unmeasured. Promotion criteria: `docs/DESIGN.md`.
+Code tests pass and the pipeline is proven once end to end. Strategy validity on the live series
+(paper period), scheduler cadence and delivery reliability over time are still unmeasured. Promotion criteria: `docs/DESIGN.md`.

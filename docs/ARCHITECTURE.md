@@ -37,7 +37,7 @@
 
 | role | source | why |
 |---|---|---|
-| live | **Twelve Data `XAU/USD`** (free key) | only real-time *spot* series reachable from US-hosted free runners (probe: HTTP 401 without key = reachable). Unverified until a key exists: free-plan access to XAU/USD and candle stamping. |
+| live | **Twelve Data `XAU/USD`** (free key) | only real-time *spot* series reachable from US-hosted free runners (probe: HTTP 401 without key = reachable). VERIFIED 16 Oct 17:19Z from a GitHub runner: real-time 5m/1h, open-time UTC stamps, no volume, 5000 bars per call, 8 credits/min 800/day (docs). |
 | live fallback | Yahoo `GC=F` | keyless but COMEX futures, ~10 min late, unofficial, and the runner got HTTP 429 to a bare request |
 | research | Binance `XAUUSDT` perp 1m → 5m/1h, 2025-12-11 → now | keyless, real time, deep; **HTTP 451 (geo-blocked) from US runners**, so it cannot be the live source |
 | research cross-check | Dukascopy spot BID 1m | real spot; connection-level throttling blocked the download on 16 Oct (retry later, slowly) |
