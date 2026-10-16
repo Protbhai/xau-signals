@@ -1,0 +1,18 @@
+{
+ "extra": {},
+ "run_id": "",
+ "runs": [
+  {
+   "alert_action": "none",
+   "mode": "paper",
+   "notes": [
+    "provider not usable: XAU_TWELVEDATA_KEY not set"
+   ],
+   "started_at": "2026-10-16T16:52:23.510681+00:00",
+   "state": "DATA_UNAVAILABLE"
+  }
+ ],
+ "schema": 1,
+ "session": null,
+ "updated_at": "2026-10-16T16:52:23.510689+00:00"
+}
