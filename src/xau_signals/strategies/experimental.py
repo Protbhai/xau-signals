@@ -46,7 +46,7 @@ class BreakoutRetestV1:
         self.inv_buf = invalidation_buffer_atr
         self.min_range_atr = min_range_atr
 
-    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle]) -> Evaluation:
+    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle], aux=None) -> Evaluation:
         as_of = to_utc(as_of)
         s = [c for c in setup_candles if c.ts_close <= as_of]
         ev = Evaluation(as_of=as_of, bias="NONE", state=SetupState.DATA_UNAVAILABLE)
@@ -146,7 +146,7 @@ class RangeRejectionV1:
         self.band, self.slope_atr, self.lookback = range_band_atr, slope_atr, lookback_bars
         self.expiry_bars, self.stale_ext, self.inv_buf = expiry_bars, stale_extension_atr, invalidation_buffer_atr
 
-    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle]) -> Evaluation:
+    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle], aux=None) -> Evaluation:
         as_of = to_utc(as_of)
         b = [c for c in bias_candles if c.ts_close <= as_of]
         s = [c for c in setup_candles if c.ts_close <= as_of]
@@ -211,7 +211,7 @@ class BenchmarkExtV1(BenchmarkV1):
         super().__init__(**kw)
         self.max_ext = max_ext_atr
 
-    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle]) -> Evaluation:
+    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle], aux=None) -> Evaluation:
         ev = super().evaluate(as_of=as_of, bias_candles=bias_candles, setup_candles=setup_candles)
         if ev.state != SetupState.SETUP_QUALIFIED:
             return ev

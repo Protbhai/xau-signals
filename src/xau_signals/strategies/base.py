@@ -32,6 +32,7 @@ class Setup:
     expires_at: datetime      # UTC; after this the setup is EXPIRED if untriggered
     atr: float                # setup-interval ATR at anchor, for extension checks
     notes: str = ""
+    entry_mode: str = "conditional"   # conditional: needs a later close beyond trigger | immediate: entered at trigger price at anchor close
 
     @property
     def setup_id(self) -> str:
@@ -56,7 +57,7 @@ class Strategy(Protocol):
     name: str
     version: str
 
-    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle]) -> Evaluation: ...
+    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle], aux: dict[str, list[Candle]] | None = None) -> Evaluation: ...
 
 
 # ---- small indicator helpers (pure python; no look-ahead by construction) -----

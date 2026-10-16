@@ -21,7 +21,7 @@ from .session import SessionSpec, session_bounds, session_date
 from .strategies.base import Setup
 from .timeutil import to_utc
 
-HORIZONS_MIN = (30, 60, 120)
+HORIZONS_MIN = (15, 30, 60, 120)
 
 
 @dataclass
@@ -78,6 +78,28 @@ def evaluate_outcome(setup: Setup, later: list[Candle], *, spec: SessionSpec = S
         return out
     up = setup.direction == "UP"
     trig_i = None
+    if setup.entry_mode == "immediate":
+        # entered at setup.trigger when the anchor candle closed; excursions start with the first later candle
+        out.triggered_at = setup.anchor_ts.isoformat()
+        t0 = later[0].ts_open
+        after = later
+        for c in after:
+            inval = (c.close < setup.invalidation) if up else (c.close > setup.invalidation)
+            if inval:
+                out.invalidated_after_trigger_at = c.ts_open.isoformat()
+                break
+        step = (later[1].ts_open - later[0].ts_open) if len(later) > 1 else timedelta(minutes=5)
+        for m in HORIZONS_MIN:
+            end = t0 + timedelta(minutes=m)
+            win = [c for c in after if c.ts_close <= end]
+            complete = bool(win) and win[-1].ts_close >= end - step
+            out.excursions.append(_excursion(setup.direction, setup.trigger, win, f"+{m}m", complete))
+        _, sess_end = session_bounds(session_date(setup.anchor_ts), spec)
+        out.within_session_end = sess_end.isoformat()
+        win = [c for c in after if c.ts_close <= sess_end]
+        complete = bool(win) and win[-1].ts_close >= sess_end - step
+        out.excursions.append(_excursion(setup.direction, setup.trigger, win, "to_15:00_IST", complete))
+        return out
     for i, c in enumerate(later):
         if c.ts_open >= setup.expires_at:
             break

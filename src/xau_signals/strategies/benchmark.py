@@ -59,7 +59,7 @@ class BenchmarkV1:
         return "NONE", reasons, m
 
     # -- evaluate ----------------------------------------------------------------
-    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle]) -> Evaluation:
+    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle], aux=None) -> Evaluation:
         as_of = to_utc(as_of)
         # Only candles completed by as_of may be used (guards replay against look-ahead).
         bias_candles = [c for c in bias_candles if c.ts_close <= as_of]

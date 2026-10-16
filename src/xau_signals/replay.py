@@ -80,7 +80,7 @@ class ReplayResult:
             "blocked": self.blocked,
             "outcomes": {"n": n, "triggered": len(trig), "invalidated_before_trigger": inv_b, "expired_untriggered": exp,
                          "unavailable": unav, "invalidated_after_trigger": inv_a,
-                         "+30m": hz("+30m"), "+60m": hz("+60m"), "+120m": hz("+120m"), "to_15:00_IST": hz("to_15:00_IST")},
+                         "+15m": hz("+15m"), "+30m": hz("+30m"), "+60m": hz("+60m"), "+120m": hz("+120m"), "to_15:00_IST": hz("to_15:00_IST")},
         }
 
 
@@ -95,10 +95,14 @@ def _decision_times(d: date, cfg: ReplayConfig) -> list[datetime]:
 
 
 def replay(strategy: Strategy, bias_candles: list[Candle], setup_candles: list[Candle], *, cfg: ReplayConfig,
-           start: date | None = None, end: date | None = None, bias_lookback: int = 60, setup_lookback: int = 150) -> ReplayResult:
+           start: date | None = None, end: date | None = None, bias_lookback: int = 60, setup_lookback: int = 150,
+           aux: dict[str, list[Candle]] | None = None, aux_lookback: int = 400) -> ReplayResult:
+    """aux: extra completed-candle series (e.g. {"15m": [...], "1m": [...], "4h": [...]}) sliced by close time <= t."""
     res = ReplayResult(strategy=f"{strategy.name}@{strategy.version}", config=cfg)
     setup_candles = sorted(setup_candles, key=lambda c: c.ts_open)
     bias_candles = sorted(bias_candles, key=lambda c: c.ts_open)
+    aux = {k: sorted(v, key=lambda c: c.ts_open) for k, v in (aux or {}).items()}
+    aux_i = {k: 0 for k in aux}
     if not setup_candles:
         return res
     d0 = start or setup_candles[0].ts_open.astimezone(IST).date()
@@ -122,11 +126,18 @@ def replay(strategy: Strategy, bias_candles: list[Candle], setup_candles: list[C
             s = setup_candles[max(0, si - setup_lookback):si]
             if not s:
                 continue
+            aux_now = {}
+            for k, series in aux.items():
+                j = aux_i[k]
+                while j < len(series) and series[j].ts_close <= t:
+                    j += 1
+                aux_i[k] = j
+                aux_now[k] = series[max(0, j - aux_lookback):j]
             day_had_data = True
             res.checks += 1
             _, rep = validate(s, symbol=s[-1].symbol, interval=s[-1].interval, now=t, max_age_seconds=900, max_unexplained_gap_bars=1)
             fresh = bool(rep.fresh)
-            ev = strategy.evaluate(as_of=t, bias_candles=b, setup_candles=s)
+            ev = strategy.evaluate(as_of=t, bias_candles=b, setup_candles=s, aux=aux_now)
             res.states[ev.state.value] = res.states.get(ev.state.value, 0) + 1
             if ev.state != SetupState.SETUP_QUALIFIED or ev.setup is None:
                 continue
@@ -147,7 +158,7 @@ def replay(strategy: Strategy, bias_candles: list[Candle], setup_candles: list[C
             later = [c for c in setup_candles if c.ts_open > ev.setup.anchor_ts and c.ts_open < to_utc(datetime.combine(d, cfg.spec.end, IST)) + timedelta(hours=3)]
             oc = evaluate_outcome(ev.setup, later, spec=cfg.spec)
             res.outcomes.append(oc)
-            res.alerts.append({"day": d.isoformat(), "decision_ist": t.astimezone(IST).strftime("%H:%M"), "direction": ev.setup.direction,
+            res.alerts.append({"day": d.isoformat(), "decision_ist": t.astimezone(IST).strftime("%H:%M"), "direction": ev.setup.direction, "entry_mode": ev.setup.entry_mode,
                                "trigger": ev.setup.trigger, "invalidation": ev.setup.invalidation, "atr": round(ev.setup.atr, 2),
                                "alert_age_min": round((t - ev.setup.anchor_ts).total_seconds() / 60 - 5, 1),
                                "outcome": oc.to_dict()})
