@@ -204,3 +204,47 @@ class OldMonitorCloudV1:
         ev.state = SetupState.SETUP_QUALIFIED
         ev.reasons.append(reason + " Hourly agrees; 4h not opposing.")
         return ev
+
+
+class OldDirectionV1:
+    """The message the old cloud actually sent: the 5m EMA20 'lean' (context_direction on 5m closes:
+    UP when close > EMA20 and EMA20 rising over 3 bars; DOWN mirror), delivered once per direction per
+    IST session date whenever it changes, inside 09:00-15:00 IST. Entry = the 5m close that produced
+    the lean (IMMEDIATE); its own measurement horizons were +5/+10/+15 minutes. No cap, no cooldown.
+    Invalidation is not defined in the old code; the replay uses the latest completed 5m low/high so the
+    'invalidation hit' column stays comparable but should not be read as the old design's stop.
+    """
+    name = "old_direction_v1"
+    version = "port-1.0"
+
+    def __init__(self, **_):
+        self._last: tuple[str, str] | None = None   # (session_date, direction) last emitted
+
+    def evaluate(self, *, as_of: datetime, bias_candles: list[Candle], setup_candles: list[Candle], aux=None) -> Evaluation:
+        as_of = to_utc(as_of)
+        five = [c for c in setup_candles if c.ts_close <= as_of]
+        ev = Evaluation(as_of=as_of, bias="NONE", state=SetupState.DATA_UNAVAILABLE)
+        if len(five) < 30:
+            ev.reasons.append("need 30 completed 5m candles")
+            return ev
+        ev.setup_candle_ts = five[-1].ts_open
+        d = _context_direction(five[-80:])
+        if d not in ("BUY", "SELL"):
+            ev.state = SetupState.NO_SETUP
+            ev.reasons.append("No clear fresh 5m direction")
+            return ev
+        direction = "UP" if d == "BUY" else "DOWN"
+        ev.bias = direction
+        key = (as_of.astimezone(IST).date().isoformat(), direction)
+        if self._last == key:
+            ev.state = SetupState.NO_SETUP
+            ev.reasons.append("direction unchanged since last notification")
+            return ev
+        self._last = key
+        last = five[-1]
+        inval = last.low if direction == "UP" else last.high
+        ev.setup = Setup(direction, "old_5m_lean_change", last.ts_open, last.close, min(last.close, inval), max(last.close, inval), inval,
+                         last.ts_close + timedelta(minutes=5), _atr_old(five) or 1.0, notes="old cloud direction message", entry_mode="immediate")
+        ev.state = SetupState.SETUP_QUALIFIED
+        ev.reasons.append(f"5m lean changed to {direction}")
+        return ev

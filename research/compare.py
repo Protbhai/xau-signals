@@ -42,6 +42,7 @@ def main():
     ap.add_argument("--strategies", default=",".join(REGISTRY))
     ap.add_argument("--tag", default="dev")
     ap.add_argument("--cooldown", type=int, default=None, help="override cooldown minutes")
+    ap.add_argument("--cap", type=int, default=None, help="override max alerts per session")
     ap.add_argument("--aux", default="15m,1m,4h", help="extra series to load if files exist")
     a = ap.parse_args()
 
@@ -53,7 +54,7 @@ def main():
     s = read_csv(raw / pattern.format(iv="5m"), symbol=symbol, interval="5m", source=a.series)
     start, end = date.fromisoformat(a.start), date.fromisoformat(a.end)
     cfg = ReplayConfig(cadence_minutes=a.cadence, delay_minutes=a.delay,
-                       max_alerts=int(settings.get("session", "max_alerts_per_session", 3)),
+                       max_alerts=a.cap if a.cap is not None else int(settings.get("session", "max_alerts_per_session", 3)),
                        cooldown_minutes=a.cooldown if a.cooldown is not None else int(settings.get("session", "cooldown_minutes", 20)))
     aux = {}
     for iv in [x for x in a.aux.split(",") if x]:
@@ -82,7 +83,7 @@ def main():
               f"trig={o['triggered']} invB={o['invalidated_before_trigger']} exp={o['expired_untriggered']} unav={o['unavailable']} "
               f"| +15m fav={o['+15m'].get('favourable',0)}/{o['+15m'].get('n',0)} | to15:00 n={h.get('n',0)} fav={h.get('favourable',0)} adv={h.get('adverse',0)} medMove={h.get('median_close_move')} "
               f"medMFE={h.get('median_mfe')} medMAE={h.get('median_mae')} | {summ['seconds']}s", flush=True)
-    out = ROOT / "docs" / "research" / "results" / f"{a.tag}_{a.series}_{a.start}_{a.end}_d{a.delay:g}_cd{cfg.cooldown_minutes}.json"
+    out = ROOT / "docs" / "research" / "results" / f"{a.tag}_{a.series}_{a.start}_{a.end}_d{a.delay:g}_cd{cfg.cooldown_minutes}_cap{cfg.max_alerts}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"series": a.series, "start": a.start, "end": a.end, "config": cfg.__dict__ | {"spec": str(cfg.spec)},
                                "params": settings.raw.get("strategy"), "results": results}, indent=1, default=str), encoding="utf-8")

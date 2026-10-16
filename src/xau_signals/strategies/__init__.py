@@ -1,7 +1,7 @@
 from .base import Evaluation, Setup, SetupState, Strategy
 from .benchmark import BenchmarkV1
 from .experimental import BenchmarkExtV1, BreakoutRetestV1, RangeRejectionV1
-from .old_monitor import OldMonitorCloudV1, OldMonitorSessionV1
+from .old_monitor import OldDirectionV1, OldMonitorCloudV1, OldMonitorSessionV1
 
 REGISTRY: dict[str, type[Strategy]] = {
     "benchmark_v1": BenchmarkV1,
@@ -10,6 +10,7 @@ REGISTRY: dict[str, type[Strategy]] = {
     "benchmark_ext_v1": BenchmarkExtV1,
     "old_session_v1": OldMonitorSessionV1,
     "old_cloud_v1": OldMonitorCloudV1,
+    "old_direction_v1": OldDirectionV1,
 }
 
 
