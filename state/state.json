@@ -4,7 +4,7 @@
   "last_slot_lag_s": 52,
   "last_slot_run": "f8ac097a63"
  },
- "run_id": "f8ac097a63",
+ "run_id": "1ab1343b95",
  "runs": [
   {
    "alert_action": "none",
@@ -134,6 +134,19 @@
     "1h": "XAU/USD@1h: 33/33 candles age=52s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=52s fresh=True"
    }
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "slot 1792173600 already handled by run f8ac097a63"
+   ],
+   "run_id": "1ab1343b95",
+   "started_at": "2026-10-16T18:01:19.236139+00:00",
+   "state": "DUPLICATE_SLOT",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -145,5 +158,5 @@
   "seen_setup_ids": [],
   "session_date": "2026-10-16"
  },
- "updated_at": "2026-10-16T18:00:53.215504+00:00"
+ "updated_at": "2026-10-16T18:01:19.236510+00:00"
 }
