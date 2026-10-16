@@ -11,6 +11,7 @@ from . import market_hours
 from .config import Settings, load_settings
 from .log import setup_logging
 from .notify.telegram import PaperSender, TelegramSender
+from .providers.base import ProviderError
 from .state import StateStore
 from .timeutil import IST, now_utc, to_utc
 from .tracking import Tracker
@@ -57,7 +58,19 @@ def cmd_run(args, settings: Settings, log):
     tracker = Tracker(settings.path("data/tracking"))
     sender = _sender(settings, log)
     now = datetime.fromisoformat(args.now) if args.now else None
-    summary = run_once(settings, provider=_provider(settings), sender=sender, store=store, tracker=tracker, now=now, force_fetch=args.force)
+    try:
+        provider = _provider(settings)
+    except ProviderError as e:
+        # e.g. no API key configured yet: record the run honestly as DATA_UNAVAILABLE and exit 0 so state persists.
+        log.error("provider not usable: %s", e)
+        d = {"mode": settings.mode, "state": "DATA_UNAVAILABLE", "alert_action": "none", "notes": [f"provider not usable: {e}"]}
+        with store.lock():
+            st = store.load()
+            StateStore.record_run(st, d | {"started_at": now_utc().isoformat()})
+            store.save(st)
+        print(json.dumps(d, indent=1))
+        return 0
+    summary = run_once(settings, provider=provider, sender=sender, store=store, tracker=tracker, now=now, force_fetch=args.force)
     d = summary.to_dict()
     d["mode"] = settings.mode
     if isinstance(sender, PaperSender) and sender.messages:
