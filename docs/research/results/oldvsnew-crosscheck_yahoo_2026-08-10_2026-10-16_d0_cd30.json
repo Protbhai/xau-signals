@@ -1,0 +1,7059 @@
+{
+ "series": "yahoo",
+ "start": "2026-08-10",
+ "end": "2026-10-16",
+ "config": {
+  "cadence_minutes": 5,
+  "delay_minutes": 0.0,
+  "max_alerts": 3,
+  "cooldown_minutes": 30,
+  "spec": "SessionSpec(start=datetime.time(9, 0), end=datetime.time(15, 0))",
+  "stale_ext_atr": 1.0
+ },
+ "params": {
+  "name": "benchmark_v1",
+  "benchmark_v1": {
+   "bias_sma": 20,
+   "bias_lookback_slope": 3,
+   "setup_ema": 20,
+   "atr_period": 14,
+   "touch_tolerance_atr": 0.25,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1
+  },
+  "breakout_retest_v1": {
+   "range_minutes": 90,
+   "atr_period": 14,
+   "retest_tol_atr": 0.3,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1,
+   "min_range_atr": 1.0
+  },
+  "range_rejection_v1": {
+   "bias_sma": 20,
+   "bias_lookback_slope": 3,
+   "atr_period": 14,
+   "range_band_atr": 0.75,
+   "slope_atr": 0.25,
+   "lookback_bars": 36,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1
+  },
+  "benchmark_ext_v1": {
+   "bias_sma": 20,
+   "bias_lookback_slope": 3,
+   "setup_ema": 20,
+   "atr_period": 14,
+   "touch_tolerance_atr": 0.25,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1,
+   "max_ext_atr": 2.0
+  }
+ },
+ "results": {
+  "old_cloud_v1": {
+   "summary": {
+    "strategy": "old_cloud_v1@port-1.0",
+    "cadence_min": 5,
+    "delay_min": 0.0,
+    "session_days": 50,
+    "checks": 3600,
+    "states": {
+     "DATA_UNAVAILABLE": 288,
+     "NO_SETUP": 3307,
+     "SETUP_QUALIFIED": 5
+    },
+    "distinct_qualified_setups": 5,
+    "alerts_sent": 5,
+    "alerts_per_day_mean": 0.1,
+    "days_with_0_alerts": 45,
+    "days_with_3_alerts": 0,
+    "blocked": {},
+    "outcomes": {
+     "n": 5,
+     "triggered": 5,
+     "invalidated_before_trigger": 0,
+     "expired_untriggered": 0,
+     "unavailable": 0,
+     "invalidated_after_trigger": 3,
+     "+15m": {
+      "n": 5,
+      "favourable": 3,
+      "adverse": 2,
+      "flat": 0,
+      "median_close_move": 0.7,
+      "median_mfe": 1.9,
+      "median_mae": 3.2,
+      "incomplete": 0
+     },
+     "+30m": {
+      "n": 5,
+      "favourable": 3,
+      "adverse": 2,
+      "flat": 0,
+      "median_close_move": 1.7,
+      "median_mfe": 4.6,
+      "median_mae": 3.2,
+      "incomplete": 0
+     },
+     "+60m": {
+      "n": 5,
+      "favourable": 3,
+      "adverse": 2,
+      "flat": 0,
+      "median_close_move": 2.2,
+      "median_mfe": 6.8,
+      "median_mae": 4.5,
+      "incomplete": 0
+     },
+     "+120m": {
+      "n": 5,
+      "favourable": 5,
+      "adverse": 0,
+      "flat": 0,
+      "median_close_move": 9.2,
+      "median_mfe": 15.7,
+      "median_mae": 6.3,
+      "incomplete": 0
+     },
+     "to_15:00_IST": {
+      "n": 5,
+      "favourable": 2,
+      "adverse": 3,
+      "flat": 0,
+      "median_close_move": -1.5,
+      "median_mfe": 13.7,
+      "median_mae": 6.3,
+      "incomplete": 0
+     }
+    },
+    "seconds": 4.2
+   },
+   "alerts": [
+    {
+     "day": "2026-08-21",
+     "decision_ist": "09:45",
+     "direction": "UP",
+     "entry_mode": "immediate",
+     "trigger": 4596.60009765625,
+     "invalidation": 4592.10009765625,
+     "atr": 4.81,
+     "alert_age_min": 10.0,
+     "outcome": {
+      "setup_id": "d5721832f2fe",
+      "direction": "UP",
+      "trigger": 4596.60009765625,
+      "invalidation": 4592.10009765625,
+      "atr": 4.807059151785714,
+      "triggered_at": "2026-08-21T04:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-21T05:15:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 1.89990234375,
+        "mae": 4.5,
+        "close_move": 0.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.7998046875,
+        "mae": 4.5,
+        "close_move": 3.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.7998046875,
+        "mae": 4.5,
+        "close_move": -2.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 15.7998046875,
+        "mae": 11.2001953125,
+        "close_move": 9.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 65,
+        "mfe": 62.7998046875,
+        "mae": 11.2001953125,
+        "close_move": 43.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-27",
+     "decision_ist": "14:15",
+     "direction": "DOWN",
+     "entry_mode": "immediate",
+     "trigger": 4649.2001953125,
+     "invalidation": 4653.2001953125,
+     "atr": 4.11,
+     "alert_age_min": 10.0,
+     "outcome": {
+      "setup_id": "398190663588",
+      "direction": "DOWN",
+      "trigger": 4649.2001953125,
+      "invalidation": 4653.2001953125,
+      "atr": 4.107038225446429,
+      "triggered_at": "2026-08-27T08:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 1.30029296875,
+        "mae": 4.0,
+        "close_move": -2.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.60009765625,
+        "mae": 6.2998046875,
+        "close_move": 1.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 3.30029296875,
+        "mae": 6.2998046875,
+        "close_move": 2.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 30.30029296875,
+        "mae": 6.2998046875,
+        "close_move": 17.400390625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 11,
+        "mfe": 2.60009765625,
+        "mae": 6.2998046875,
+        "close_move": -1.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-27T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-28",
+     "decision_ist": "09:25",
+     "direction": "DOWN",
+     "entry_mode": "immediate",
+     "trigger": 4631.0,
+     "invalidation": 4634.0,
+     "atr": 3.82,
+     "alert_age_min": 10.0,
+     "outcome": {
+      "setup_id": "e2594506da45",
+      "direction": "DOWN",
+      "trigger": 4631.0,
+      "invalidation": 4634.0,
+      "atr": 3.8214634486607144,
+      "triggered_at": "2026-08-28T03:40:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-28T04:15:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 0.10009765625,
+        "mae": 3.0,
+        "close_move": -0.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 0.7998046875,
+        "mae": 3.0,
+        "close_move": -0.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 1.0,
+        "mae": 6.5,
+        "close_move": -1.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 8.0,
+        "mae": 7.60009765625,
+        "close_move": 6.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 69,
+        "mfe": 8.0,
+        "mae": 36.7001953125,
+        "close_move": -24.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-28T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-14",
+     "decision_ist": "12:30",
+     "direction": "DOWN",
+     "entry_mode": "immediate",
+     "trigger": 4362.5,
+     "invalidation": 4365.7001953125,
+     "atr": 5.51,
+     "alert_age_min": 10.0,
+     "outcome": {
+      "setup_id": "46f60d88694e",
+      "direction": "DOWN",
+      "trigger": 4362.5,
+      "invalidation": 4365.7001953125,
+      "atr": 5.507149832589286,
+      "triggered_at": "2026-09-14T06:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.60009765625,
+        "mae": 3.2001953125,
+        "close_move": 0.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.60009765625,
+        "mae": 3.2001953125,
+        "close_move": -1.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 6.7998046875,
+        "mae": 3.2001953125,
+        "close_move": 4.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 15.7001953125,
+        "mae": 3.2001953125,
+        "close_move": 13.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 32,
+        "mfe": 42.39990234375,
+        "mae": 3.2001953125,
+        "close_move": 34.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-14T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-13",
+     "decision_ist": "09:30",
+     "direction": "UP",
+     "entry_mode": "immediate",
+     "trigger": 4211.10009765625,
+     "invalidation": 4208.2001953125,
+     "atr": 4.51,
+     "alert_age_min": 10.0,
+     "outcome": {
+      "setup_id": "e0acd4d917cc",
+      "direction": "UP",
+      "trigger": 4211.10009765625,
+      "invalidation": 4208.2001953125,
+      "atr": 4.507114955357143,
+      "triggered_at": "2026-10-13T03:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-13T09:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.2998046875,
+        "mae": 2.89990234375,
+        "close_move": 1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.0,
+        "mae": 2.89990234375,
+        "close_move": 5.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 8.69970703125,
+        "mae": 2.89990234375,
+        "close_move": 7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 13.69970703125,
+        "mae": 2.89990234375,
+        "close_move": 5.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 68,
+        "mfe": 13.69970703125,
+        "mae": 4.39990234375,
+        "close_move": -4.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-13T09:30:00+00:00"
+     }
+    }
+   ]
+  },
+  "benchmark_v1": {
+   "summary": {
+    "strategy": "benchmark_v1@1.0.0",
+    "cadence_min": 5,
+    "delay_min": 0.0,
+    "session_days": 50,
+    "checks": 3600,
+    "states": {
+     "NO_SETUP": 1888,
+     "SETUP_FORMING": 1244,
+     "SETUP_QUALIFIED": 389,
+     "SETUP_EXPIRED": 79
+    },
+    "distinct_qualified_setups": 389,
+    "alerts_sent": 126,
+    "alerts_per_day_mean": 2.52,
+    "days_with_0_alerts": 3,
+    "days_with_3_alerts": 36,
+    "blocked": {
+     "cooldown": 90,
+     "daily cap reached (3)": 173
+    },
+    "outcomes": {
+     "n": 126,
+     "triggered": 85,
+     "invalidated_before_trigger": 36,
+     "expired_untriggered": 5,
+     "unavailable": 0,
+     "invalidated_after_trigger": 53,
+     "+15m": {
+      "n": 85,
+      "favourable": 56,
+      "adverse": 29,
+      "flat": 0,
+      "median_close_move": 2.0,
+      "median_mfe": 5.2,
+      "median_mae": 0.8,
+      "incomplete": 0
+     },
+     "+30m": {
+      "n": 85,
+      "favourable": 56,
+      "adverse": 29,
+      "flat": 0,
+      "median_close_move": 3.5,
+      "median_mfe": 7.0,
+      "median_mae": 1.7,
+      "incomplete": 0
+     },
+     "+60m": {
+      "n": 85,
+      "favourable": 55,
+      "adverse": 30,
+      "flat": 0,
+      "median_close_move": 3.8,
+      "median_mfe": 9.6,
+      "median_mae": 3.7,
+      "incomplete": 0
+     },
+     "+120m": {
+      "n": 85,
+      "favourable": 57,
+      "adverse": 27,
+      "flat": 1,
+      "median_close_move": 5.8,
+      "median_mfe": 11.7,
+      "median_mae": 6.2,
+      "incomplete": 0
+     },
+     "to_15:00_IST": {
+      "n": 83,
+      "favourable": 57,
+      "adverse": 26,
+      "flat": 0,
+      "median_close_move": 5.8,
+      "median_mfe": 15.5,
+      "median_mae": 6.5,
+      "incomplete": 2
+     }
+    },
+    "seconds": 4.2
+   },
+   "alerts": [
+    {
+     "day": "2026-08-10",
+     "decision_ist": "10:55",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4396.0,
+     "invalidation": 4392.728655382043,
+     "atr": 3.71,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a6f1d08cb2a3",
+      "direction": "UP",
+      "trigger": 4396.0,
+      "invalidation": 4392.728655382043,
+      "atr": 3.714422742067366,
+      "triggered_at": "2026-08-10T05:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-10T11:10:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 11.2998046875,
+        "mae": 0.0,
+        "close_move": 10.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 16.5,
+        "mae": 0.0,
+        "close_move": 6.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 16.5,
+        "mae": 0.0,
+        "close_move": 11.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 23.5,
+        "mae": 0.0,
+        "close_move": 16.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 47,
+        "mfe": 25.5,
+        "mae": 0.0,
+        "close_move": 10.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-10T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-10",
+     "decision_ist": "12:50",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4416.2998046875,
+     "invalidation": 4409.249397164297,
+     "atr": 4.51,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ed72d6dde8ec",
+      "direction": "UP",
+      "trigger": 4416.2998046875,
+      "invalidation": 4409.249397164297,
+      "atr": 4.507981482027854,
+      "triggered_at": "2026-08-10T07:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-10T08:35:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.2001953125,
+        "mae": 4.5,
+        "close_move": 1.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.2001953125,
+        "mae": 4.5,
+        "close_move": -1.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.2001953125,
+        "mae": 5.19970703125,
+        "close_move": -4.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 5.2001953125,
+        "mae": 13.39990234375,
+        "close_move": -9.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 25,
+        "mfe": 5.2001953125,
+        "mae": 13.39990234375,
+        "close_move": -10.19970703125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-10T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-10",
+     "decision_ist": "13:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4415.5,
+     "invalidation": 4413.066643177364,
+     "atr": 4.33,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "7f6ab9f37896",
+      "direction": "UP",
+      "trigger": 4415.5,
+      "invalidation": 4413.066643177364,
+      "atr": 4.333568226359042,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-10T08:05:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-11",
+     "decision_ist": "09:00",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4480.7998046875,
+     "invalidation": 4475.046169427197,
+     "atr": 5.54,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "fddb3b559546",
+      "direction": "UP",
+      "trigger": 4480.7998046875,
+      "invalidation": 4475.046169427197,
+      "atr": 5.5392822905310615,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-11T03:45:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-11",
+     "decision_ist": "10:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4480.2998046875,
+     "invalidation": 4470.334529508948,
+     "atr": 4.65,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "702b5f4e6773",
+      "direction": "UP",
+      "trigger": 4480.2998046875,
+      "invalidation": 4470.334529508948,
+      "atr": 4.65275178551623,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-11T04:40:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-12",
+     "decision_ist": "10:20",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4462.39990234375,
+     "invalidation": 4459.173373213744,
+     "atr": 3.27,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b9348a9eb306",
+      "direction": "UP",
+      "trigger": 4462.39990234375,
+      "invalidation": 4459.173373213744,
+      "atr": 3.2662678625629127,
+      "triggered_at": "2026-08-12T05:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-12T05:15:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.7001953125,
+        "mae": 10.5,
+        "close_move": -8.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.7001953125,
+        "mae": 13.39990234375,
+        "close_move": -8.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.7001953125,
+        "mae": 18.39990234375,
+        "close_move": -15.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 3.7001953125,
+        "mae": 18.39990234375,
+        "close_move": -1.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 52,
+        "mfe": 21.80029296875,
+        "mae": 18.39990234375,
+        "close_move": 10.30029296875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-12T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-12",
+     "decision_ist": "12:10",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4455.0,
+     "invalidation": 4448.399404093767,
+     "atr": 4.0,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "5543daeb592f",
+      "direction": "UP",
+      "trigger": 4455.0,
+      "invalidation": 4448.399404093767,
+      "atr": 4.004005937330908,
+      "triggered_at": "2026-08-12T06:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 11.10009765625,
+        "mae": 0.0,
+        "close_move": 5.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 11.10009765625,
+        "mae": 0.0,
+        "close_move": 3.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 14.39990234375,
+        "mae": 0.0,
+        "close_move": 13.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 15.10009765625,
+        "mae": 0.0,
+        "close_move": 8.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 32,
+        "mfe": 29.2001953125,
+        "mae": 0.0,
+        "close_move": 17.7001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-12T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-12",
+     "decision_ist": "12:55",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4459.89990234375,
+     "invalidation": 4456.9994709041,
+     "atr": 4.0,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "f31b0ac39d71",
+      "direction": "UP",
+      "trigger": 4459.89990234375,
+      "invalidation": 4456.9994709041,
+      "atr": 4.004314396497753,
+      "triggered_at": "2026-08-12T07:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.89990234375,
+        "mae": 0.0,
+        "close_move": 7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.60009765625,
+        "mae": 0.0,
+        "close_move": 6.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.2001953125,
+        "mae": 0.0,
+        "close_move": 6.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 24.30029296875,
+        "mae": 0.0,
+        "close_move": 12.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 24,
+        "mfe": 24.30029296875,
+        "mae": 0.0,
+        "close_move": 12.80029296875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-12T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-13",
+     "decision_ist": "11:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4451.60009765625,
+     "invalidation": 4465.675753420206,
+     "atr": 4.76,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c12228f019df",
+      "direction": "DOWN",
+      "trigger": 4451.60009765625,
+      "invalidation": 4465.675753420206,
+      "atr": 4.755581077057477,
+      "triggered_at": "2026-08-13T05:40:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 14.39990234375,
+        "mae": 0.0,
+        "close_move": 11.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 19.10009765625,
+        "mae": 0.0,
+        "close_move": 18.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 26.0,
+        "mae": 0.0,
+        "close_move": 20.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 26.0,
+        "mae": 0.0,
+        "close_move": 16.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 45,
+        "mfe": 31.30029296875,
+        "mae": 0.0,
+        "close_move": 15.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-13T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-13",
+     "decision_ist": "12:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4435.10009765625,
+     "invalidation": 4439.078515883155,
+     "atr": 4.78,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "98d66d5085cb",
+      "direction": "DOWN",
+      "trigger": 4435.10009765625,
+      "invalidation": 4439.078515883155,
+      "atr": 4.784182269053135,
+      "triggered_at": "2026-08-13T07:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-13T09:55:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.7001953125,
+        "mae": 0.0,
+        "close_move": 2.0,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.30029296875,
+        "mae": 0.60009765625,
+        "close_move": -0.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 14.80029296875,
+        "mae": 0.60009765625,
+        "close_move": 12.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 14.80029296875,
+        "mae": 0.60009765625,
+        "close_move": 1.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 27,
+        "mfe": 14.80029296875,
+        "mae": 3.7998046875,
+        "close_move": -1.2998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-13T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-13",
+     "decision_ist": "13:20",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4427.7001953125,
+     "invalidation": 4436.068072999219,
+     "atr": 4.68,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "3077737a58a8",
+      "direction": "DOWN",
+      "trigger": 4427.7001953125,
+      "invalidation": 4436.068072999219,
+      "atr": 4.679753429689204,
+      "triggered_at": "2026-08-13T07:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-13T09:15:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.400390625,
+        "mae": 0.0,
+        "close_move": 5.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.400390625,
+        "mae": 2.2998046875,
+        "close_move": -1.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.400390625,
+        "mae": 8.0,
+        "close_move": -4.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 7.400390625,
+        "mae": 14.19970703125,
+        "close_move": -14.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 18,
+        "mfe": 7.400390625,
+        "mae": 11.19970703125,
+        "close_move": -8.69970703125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-13T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-14",
+     "decision_ist": "10:20",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4378.89990234375,
+     "invalidation": 4380.410503909661,
+     "atr": 3.1,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "e6bb5f171536",
+      "direction": "DOWN",
+      "trigger": 4378.89990234375,
+      "invalidation": 4380.410503909661,
+      "atr": 3.1040625341099806,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-14T04:55:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-14",
+     "decision_ist": "11:15",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4372.39990234375,
+     "invalidation": 4379.6915420671385,
+     "atr": 3.92,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "17f27c3f67e8",
+      "direction": "DOWN",
+      "trigger": 4372.39990234375,
+      "invalidation": 4379.6915420671385,
+      "atr": 3.91737379638669,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-14T05:50:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-17",
+     "decision_ist": "09:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4451.89990234375,
+     "invalidation": 4446.769060158275,
+     "atr": 4.31,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c1cd4a0c99e9",
+      "direction": "UP",
+      "trigger": 4451.89990234375,
+      "invalidation": 4446.769060158275,
+      "atr": 4.311351542250866,
+      "triggered_at": "2026-08-17T03:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-17T05:10:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.10009765625,
+        "mae": 1.10009765625,
+        "close_move": 2.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.39990234375,
+        "mae": 1.10009765625,
+        "close_move": 1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 4.39990234375,
+        "mae": 6.39990234375,
+        "close_move": 0.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 5.80029296875,
+        "mae": 8.5,
+        "close_move": 1.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 68,
+        "mfe": 16.0,
+        "mae": 8.5,
+        "close_move": 1.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-17T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-17",
+     "decision_ist": "10:15",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4453.2998046875,
+     "invalidation": 4448.1397121222935,
+     "atr": 3.6,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "7be8f70cac49",
+      "direction": "UP",
+      "trigger": 4453.2998046875,
+      "invalidation": 4448.1397121222935,
+      "atr": 3.602878777062327,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-17T04:55:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-17",
+     "decision_ist": "10:55",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4453.5,
+     "invalidation": 4447.00206572702,
+     "atr": 3.98,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "e45a0a4d0466",
+      "direction": "UP",
+      "trigger": 4453.5,
+      "invalidation": 4447.00206572702,
+      "atr": 3.978366167300606,
+      "triggered_at": "2026-08-17T05:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-17T12:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.2001953125,
+        "mae": 4.5,
+        "close_move": -1.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.2001953125,
+        "mae": 4.5,
+        "close_move": -2.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 4.2001953125,
+        "mae": 4.5,
+        "close_move": 1.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 8.10009765625,
+        "mae": 4.5,
+        "close_move": 7.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 48,
+        "mfe": 14.39990234375,
+        "mae": 4.7001953125,
+        "close_move": -0.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-17T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-18",
+     "decision_ist": "10:30",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4448.39990234375,
+     "invalidation": 4451.2035979330185,
+     "atr": 3.04,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "75e0d042cd4d",
+      "direction": "DOWN",
+      "trigger": 4448.39990234375,
+      "invalidation": 4451.2035979330185,
+      "atr": 3.0369558926879714,
+      "triggered_at": "2026-08-18T05:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-18T05:50:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.0,
+        "mae": 1.7001953125,
+        "close_move": -1.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.0,
+        "mae": 3.2001953125,
+        "close_move": 5.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.0,
+        "mae": 4.80029296875,
+        "close_move": 2.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 7.0,
+        "mae": 7.7001953125,
+        "close_move": -6.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 53,
+        "mfe": 7.0,
+        "mae": 11.10009765625,
+        "close_move": 3.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-18T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-18",
+     "decision_ist": "11:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4446.60009765625,
+     "invalidation": 4451.908919945311,
+     "atr": 3.09,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "1f15cc0a436a",
+      "direction": "DOWN",
+      "trigger": 4446.60009765625,
+      "invalidation": 4451.908919945311,
+      "atr": 3.0882228906065103,
+      "triggered_at": "2026-08-18T05:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-18T06:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.30029296875,
+        "mae": 4.7998046875,
+        "close_move": -4.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.30029296875,
+        "mae": 6.60009765625,
+        "close_move": 0.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 4.30029296875,
+        "mae": 9.0,
+        "close_move": -4.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 4.30029296875,
+        "mae": 12.89990234375,
+        "close_move": -6.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 47,
+        "mfe": 4.30029296875,
+        "mae": 12.89990234375,
+        "close_move": 1.7001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-18T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-18",
+     "decision_ist": "11:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4444.2998046875,
+     "invalidation": 4450.163167628673,
+     "atr": 3.63,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c12418486ff7",
+      "direction": "DOWN",
+      "trigger": 4444.2998046875,
+      "invalidation": 4450.163167628673,
+      "atr": 3.6336294117360177,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-18T06:10:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-19",
+     "decision_ist": "09:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4407.2001953125,
+     "invalidation": 4409.953528448457,
+     "atr": 3.53,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "11c1426ee10b",
+      "direction": "DOWN",
+      "trigger": 4407.2001953125,
+      "invalidation": 4409.953528448457,
+      "atr": 3.534307922073775,
+      "triggered_at": "2026-08-19T04:15:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-19T07:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.900390625,
+        "mae": 0.0,
+        "close_move": 4.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.0,
+        "mae": 0.0,
+        "close_move": 7.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 17.10009765625,
+        "mae": 0.0,
+        "close_move": 15.900390625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 19.0,
+        "mae": 0.0,
+        "close_move": 8.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 62,
+        "mfe": 19.0,
+        "mae": 10.0,
+        "close_move": -3.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-19T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-19",
+     "decision_ist": "10:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4399.89990234375,
+     "invalidation": 4404.522563303558,
+     "atr": 3.22,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a4af8689cf14",
+      "direction": "DOWN",
+      "trigger": 4399.89990234375,
+      "invalidation": 4404.522563303558,
+      "atr": 3.223679910576493,
+      "triggered_at": "2026-08-19T05:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-19T07:05:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.7998046875,
+        "mae": 0.0,
+        "close_move": 4.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.7998046875,
+        "mae": 0.0,
+        "close_move": 3.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 11.69970703125,
+        "mae": 0.0,
+        "close_move": 7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 11.69970703125,
+        "mae": 7.39990234375,
+        "close_move": -6.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 52,
+        "mfe": 11.69970703125,
+        "mae": 17.30029296875,
+        "close_move": -10.7001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-19T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-19",
+     "decision_ist": "11:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4390.39990234375,
+     "invalidation": 4399.701267155631,
+     "atr": 4.01,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "59d1bad4fc56",
+      "direction": "DOWN",
+      "trigger": 4390.39990234375,
+      "invalidation": 4399.701267155631,
+      "atr": 4.014624681315415,
+      "triggered_at": "2026-08-19T05:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-19T06:50:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.10009765625,
+        "mae": 4.30029296875,
+        "close_move": -1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.10009765625,
+        "mae": 11.5,
+        "close_move": -9.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.10009765625,
+        "mae": 11.5,
+        "close_move": -11.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 2.10009765625,
+        "mae": 26.80029296875,
+        "close_move": -19.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 43,
+        "mfe": 2.10009765625,
+        "mae": 26.80029296875,
+        "close_move": -20.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-19T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-20",
+     "decision_ist": "09:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4556.0,
+     "invalidation": 4549.506781455564,
+     "atr": 4.93,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "7e21fa5aa6e9",
+      "direction": "UP",
+      "trigger": 4556.0,
+      "invalidation": 4549.506781455564,
+      "atr": 4.9321854443574535,
+      "triggered_at": "2026-08-20T03:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-20T04:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.7998046875,
+        "mae": 3.60009765625,
+        "close_move": -1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.7998046875,
+        "mae": 4.2998046875,
+        "close_move": -3.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.7998046875,
+        "mae": 12.60009765625,
+        "close_move": -8.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 2.7998046875,
+        "mae": 20.7998046875,
+        "close_move": -20.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 67,
+        "mfe": 2.7998046875,
+        "mae": 21.2001953125,
+        "close_move": -9.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-20T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-20",
+     "decision_ist": "09:40",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4554.89990234375,
+     "invalidation": 4552.38777332716,
+     "atr": 4.12,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "693a6d274f44",
+      "direction": "UP",
+      "trigger": 4554.89990234375,
+      "invalidation": 4552.38777332716,
+      "atr": 4.120313603399179,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-20T04:25:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-20",
+     "decision_ist": "11:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4546.2998046875,
+     "invalidation": 4536.7771570232835,
+     "atr": 4.23,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "96a5c1d878fd",
+      "direction": "UP",
+      "trigger": 4546.2998046875,
+      "invalidation": 4536.7771570232835,
+      "atr": 4.230382892165948,
+      "triggered_at": "2026-08-20T06:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-20T11:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.2001953125,
+        "mae": 0.0,
+        "close_move": 4.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.2001953125,
+        "mae": 0.0,
+        "close_move": 4.900390625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.2001953125,
+        "mae": 1.7998046875,
+        "close_move": -0.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 7.2001953125,
+        "mae": 6.19970703125,
+        "close_move": 4.900390625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 40,
+        "mfe": 9.60009765625,
+        "mae": 6.19970703125,
+        "close_move": 0.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-20T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-21",
+     "decision_ist": "09:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4591.7998046875,
+     "invalidation": 4584.85854992556,
+     "atr": 5.41,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "2d9bd538b657",
+      "direction": "UP",
+      "trigger": 4591.7998046875,
+      "invalidation": 4584.85854992556,
+      "atr": 5.41352418190539,
+      "triggered_at": "2026-08-21T04:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 6.7001953125,
+        "mae": 0.0,
+        "close_move": 5.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 12.60009765625,
+        "mae": 0.0,
+        "close_move": 8.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 12.60009765625,
+        "mae": 0.0,
+        "close_move": 2.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 20.60009765625,
+        "mae": 6.39990234375,
+        "close_move": 14.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 65,
+        "mfe": 67.60009765625,
+        "mae": 6.39990234375,
+        "close_move": 47.80029296875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-21",
+     "decision_ist": "11:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4594.5,
+     "invalidation": 4584.953680167258,
+     "atr": 4.46,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "da16d9e1cb26",
+      "direction": "UP",
+      "trigger": 4594.5,
+      "invalidation": 4584.953680167258,
+      "atr": 4.4622217649165945,
+      "triggered_at": "2026-08-21T05:40:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 17.89990234375,
+        "mae": 0.0,
+        "close_move": 15.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 17.89990234375,
+        "mae": 0.0,
+        "close_move": 10.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 28.2998046875,
+        "mae": 0.0,
+        "close_move": 25.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 30.2998046875,
+        "mae": 0.0,
+        "close_move": 26.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 45,
+        "mfe": 64.89990234375,
+        "mae": 0.0,
+        "close_move": 45.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-21",
+     "decision_ist": "13:10",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4622.0,
+     "invalidation": 4616.4558234440765,
+     "atr": 5.44,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "95b2faae70ec",
+      "direction": "UP",
+      "trigger": 4622.0,
+      "invalidation": 4616.4558234440765,
+      "atr": 5.441765559237104,
+      "triggered_at": "2026-08-21T07:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.0,
+        "mae": 4.10009765625,
+        "close_move": -3.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 8.60009765625,
+        "mae": 6.2001953125,
+        "close_move": 7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 19.2001953125,
+        "mae": 6.2001953125,
+        "close_move": 16.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 37.39990234375,
+        "mae": 6.2001953125,
+        "close_move": 16.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 20,
+        "mfe": 37.39990234375,
+        "mae": 6.2001953125,
+        "close_move": 17.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-24",
+     "decision_ist": "09:30",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4700.39990234375,
+     "invalidation": 4696.1708903148465,
+     "atr": 6.29,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "8be950dfdaf9",
+      "direction": "UP",
+      "trigger": 4700.39990234375,
+      "invalidation": 4696.1708903148465,
+      "atr": 6.289143726533275,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-24T04:05:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-24",
+     "decision_ist": "10:00",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4698.10009765625,
+     "invalidation": 4693.4084157351435,
+     "atr": 5.92,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "40eb9e3b563d",
+      "direction": "UP",
+      "trigger": 4698.10009765625,
+      "invalidation": 4693.4084157351435,
+      "atr": 5.915842648566539,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-24T04:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-24",
+     "decision_ist": "10:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4698.0,
+     "invalidation": 4694.393840877273,
+     "atr": 5.06,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b5d17360b44f",
+      "direction": "UP",
+      "trigger": 4698.0,
+      "invalidation": 4694.393840877273,
+      "atr": 5.060614664772015,
+      "triggered_at": "2026-08-24T05:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-24T05:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.5,
+        "mae": 5.7998046875,
+        "close_move": -5.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.5,
+        "mae": 12.5,
+        "close_move": -8.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.7998046875,
+        "mae": 12.5,
+        "close_move": 10.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 18.7001953125,
+        "mae": 12.5,
+        "close_move": 6.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 51,
+        "mfe": 18.7001953125,
+        "mae": 13.7998046875,
+        "close_move": -6.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-24T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-25",
+     "decision_ist": "09:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4688.89990234375,
+     "invalidation": 4693.620065678207,
+     "atr": 6.2,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "179c5d03c80a",
+      "direction": "DOWN",
+      "trigger": 4688.89990234375,
+      "invalidation": 4693.620065678207,
+      "atr": 6.200656782068935,
+      "triggered_at": "2026-08-25T04:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-25T05:15:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.60009765625,
+        "mae": 0.0,
+        "close_move": 6.0,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.39990234375,
+        "mae": 0.0,
+        "close_move": 6.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 9.60009765625,
+        "mae": 13.0,
+        "close_move": -11.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 9.60009765625,
+        "mae": 19.5,
+        "close_move": -19.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 61,
+        "mfe": 12.60009765625,
+        "mae": 20.7001953125,
+        "close_move": 7.19970703125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-25T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-25",
+     "decision_ist": "12:25",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4696.60009765625,
+     "invalidation": 4704.801971617122,
+     "atr": 5.02,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a30d529545b7",
+      "direction": "DOWN",
+      "trigger": 4696.60009765625,
+      "invalidation": 4704.801971617122,
+      "atr": 5.021669296221278,
+      "triggered_at": "2026-08-25T06:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.80029296875,
+        "mae": 1.69970703125,
+        "close_move": 0.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.10009765625,
+        "mae": 3.69970703125,
+        "close_move": 5.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.80029296875,
+        "mae": 3.69970703125,
+        "close_move": 10.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 20.30029296875,
+        "mae": 5.39990234375,
+        "close_move": 10.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 30,
+        "mfe": 20.30029296875,
+        "mae": 5.39990234375,
+        "close_move": 14.89990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-25T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-25",
+     "decision_ist": "12:55",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4696.10009765625,
+     "invalidation": 4700.786281967621,
+     "atr": 4.86,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "9de660837ec6",
+      "direction": "DOWN",
+      "trigger": 4696.10009765625,
+      "invalidation": 4700.786281967621,
+      "atr": 4.86477280121248,
+      "triggered_at": "2026-08-25T07:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-25T11:45:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.89990234375,
+        "mae": 0.60009765625,
+        "close_move": 0.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 10.30029296875,
+        "mae": 1.10009765625,
+        "close_move": 10.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 19.80029296875,
+        "mae": 5.89990234375,
+        "close_move": 7.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 19.80029296875,
+        "mae": 5.89990234375,
+        "close_move": 14.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 24,
+        "mfe": 19.80029296875,
+        "mae": 5.89990234375,
+        "close_move": 14.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-25T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-26",
+     "decision_ist": "14:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4680.60009765625,
+     "invalidation": 4686.838845220246,
+     "atr": 4.39,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "e32ad40452b2",
+      "direction": "DOWN",
+      "trigger": 4680.60009765625,
+      "invalidation": 4686.838845220246,
+      "atr": 4.389428764960099,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": true,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-08-26",
+     "decision_ist": "14:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4681.5,
+     "invalidation": 4687.386884943827,
+     "atr": 3.87,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ed4efc2c7bb5",
+      "direction": "DOWN",
+      "trigger": 4681.5,
+      "invalidation": 4687.386884943827,
+      "atr": 3.8688494382685343,
+      "triggered_at": "2026-08-26T09:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.5,
+        "mae": 1.7998046875,
+        "close_move": 7.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 10.2001953125,
+        "mae": 1.7998046875,
+        "close_move": 5.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.2001953125,
+        "mae": 1.7998046875,
+        "close_move": 3.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 12.7001953125,
+        "mae": 1.7998046875,
+        "close_move": 8.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 4,
+        "mfe": 10.2001953125,
+        "mae": 1.7998046875,
+        "close_move": 9.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-26T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-27",
+     "decision_ist": "12:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4659.2998046875,
+     "invalidation": 4666.178709752081,
+     "atr": 4.79,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ec11697d1042",
+      "direction": "DOWN",
+      "trigger": 4659.2998046875,
+      "invalidation": 4666.178709752081,
+      "atr": 4.785144395807834,
+      "triggered_at": "2026-08-27T06:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.599609375,
+        "mae": 0.60009765625,
+        "close_move": 1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.69970703125,
+        "mae": 0.60009765625,
+        "close_move": 8.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 12.099609375,
+        "mae": 0.60009765625,
+        "close_move": 8.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 12.099609375,
+        "mae": 1.2001953125,
+        "close_move": 7.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 32,
+        "mfe": 12.69970703125,
+        "mae": 1.2001953125,
+        "close_move": 8.599609375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-27T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-27",
+     "decision_ist": "14:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4654.2998046875,
+     "invalidation": 4658.025352457582,
+     "atr": 4.25,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a02a15ef6633",
+      "direction": "DOWN",
+      "trigger": 4654.2998046875,
+      "invalidation": 4658.025352457582,
+      "atr": 4.252548013321509,
+      "triggered_at": "2026-08-27T08:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 6.39990234375,
+        "mae": 0.0,
+        "close_move": 2.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.69970703125,
+        "mae": 1.2001953125,
+        "close_move": 6.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 8.39990234375,
+        "mae": 1.2001953125,
+        "close_move": 7.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 35.39990234375,
+        "mae": 1.2001953125,
+        "close_move": 22.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 11,
+        "mfe": 7.69970703125,
+        "mae": 1.2001953125,
+        "close_move": 3.599609375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-27T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-27",
+     "decision_ist": "14:30",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4651.89990234375,
+     "invalidation": 4655.8873690399305,
+     "atr": 3.87,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "0cb0c816ecd2",
+      "direction": "DOWN",
+      "trigger": 4651.89990234375,
+      "invalidation": 4655.8873690399305,
+      "atr": 3.873690399304208,
+      "triggered_at": "2026-08-27T09:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.7998046875,
+        "mae": 0.0,
+        "close_move": 3.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.0,
+        "mae": 0.60009765625,
+        "close_move": 4.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 33.0,
+        "mae": 0.60009765625,
+        "close_move": 26.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 33.0,
+        "mae": 0.60009765625,
+        "close_move": 10.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 5,
+        "mfe": 5.10009765625,
+        "mae": 0.60009765625,
+        "close_move": 1.19970703125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-27T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-28",
+     "decision_ist": "09:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4635.39990234375,
+     "invalidation": 4640.924934339902,
+     "atr": 4.25,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "6d609456cdea",
+      "direction": "DOWN",
+      "trigger": 4635.39990234375,
+      "invalidation": 4640.924934339902,
+      "atr": 4.249343399019688,
+      "triggered_at": "2026-08-28T03:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-28T06:45:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.5,
+        "mae": 0.10009765625,
+        "close_move": 4.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.19970703125,
+        "mae": 0.10009765625,
+        "close_move": 3.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.39990234375,
+        "mae": 2.10009765625,
+        "close_move": 5.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 8.5,
+        "mae": 3.2001953125,
+        "close_move": 8.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 70,
+        "mfe": 12.39990234375,
+        "mae": 32.30029296875,
+        "close_move": -20.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-28T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-28",
+     "decision_ist": "10:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4633.7001953125,
+     "invalidation": 4636.810568976361,
+     "atr": 3.11,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ef5acc3459cb",
+      "direction": "DOWN",
+      "trigger": 4633.7001953125,
+      "invalidation": 4636.810568976361,
+      "atr": 3.1056897636085963,
+      "triggered_at": "2026-08-28T04:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-28T06:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.7001953125,
+        "mae": 1.099609375,
+        "close_move": -0.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 3.7001953125,
+        "mae": 3.7998046875,
+        "close_move": 2.400390625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 6.80029296875,
+        "mae": 4.89990234375,
+        "close_move": 6.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 10.7001953125,
+        "mae": 6.69970703125,
+        "close_move": -4.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 58,
+        "mfe": 10.7001953125,
+        "mae": 34.0,
+        "close_move": -21.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-28T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-28",
+     "decision_ist": "10:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4634.10009765625,
+     "invalidation": 4637.614816530001,
+     "atr": 3.15,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c663a01b47be",
+      "direction": "DOWN",
+      "trigger": 4634.10009765625,
+      "invalidation": 4637.614816530001,
+      "atr": 3.1501184250071255,
+      "triggered_at": "2026-08-28T05:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-28T06:35:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.80029296875,
+        "mae": 2.69970703125,
+        "close_move": -2.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.2001953125,
+        "mae": 4.5,
+        "close_move": 7.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 11.10009765625,
+        "mae": 4.5,
+        "close_move": 1.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 11.10009765625,
+        "mae": 32.2998046875,
+        "close_move": -19.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 52,
+        "mfe": 11.10009765625,
+        "mae": 33.60009765625,
+        "close_move": -21.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-28T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-31",
+     "decision_ist": "09:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4473.10009765625,
+     "invalidation": 4478.107026698919,
+     "atr": 8.07,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "64cf4763b72f",
+      "direction": "DOWN",
+      "trigger": 4473.10009765625,
+      "invalidation": 4478.107026698919,
+      "atr": 8.072220114188601,
+      "triggered_at": "2026-08-31T03:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-31T05:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.0,
+        "mae": 3.69970703125,
+        "close_move": -1.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.7001953125,
+        "mae": 3.69970703125,
+        "close_move": 5.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.60009765625,
+        "mae": 3.69970703125,
+        "close_move": 2.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 10.60009765625,
+        "mae": 18.7998046875,
+        "close_move": -10.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 70,
+        "mfe": 10.60009765625,
+        "mae": 26.60009765625,
+        "close_move": -16.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-31T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-31",
+     "decision_ist": "09:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4467.7998046875,
+     "invalidation": 4471.895867247331,
+     "atr": 5.96,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "86e0c8133240",
+      "direction": "DOWN",
+      "trigger": 4467.7998046875,
+      "invalidation": 4471.895867247331,
+      "atr": 5.960625598307728,
+      "triggered_at": "2026-08-31T04:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-08-31T04:55:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.2998046875,
+        "mae": 4.10009765625,
+        "close_move": -2.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.2998046875,
+        "mae": 7.2001953125,
+        "close_move": -6.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.2998046875,
+        "mae": 22.7001953125,
+        "close_move": -22.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 5.2998046875,
+        "mae": 25.7001953125,
+        "close_move": -18.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 60,
+        "mfe": 5.2998046875,
+        "mae": 31.900390625,
+        "close_move": -21.7001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-08-31T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-08-31",
+     "decision_ist": "10:20",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4469.10009765625,
+     "invalidation": 4472.025849765347,
+     "atr": 5.26,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "9c15f9f83485",
+      "direction": "DOWN",
+      "trigger": 4469.10009765625,
+      "invalidation": 4472.025849765347,
+      "atr": 5.258497653471012,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-08-31T04:55:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-01",
+     "decision_ist": "09:20",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4492.10009765625,
+     "invalidation": 4487.362355236349,
+     "atr": 4.37,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "66a7f89eaabf",
+      "direction": "UP",
+      "trigger": 4492.10009765625,
+      "invalidation": 4487.362355236349,
+      "atr": 4.3744945115150164,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-01T03:55:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-01",
+     "decision_ist": "10:40",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4478.7998046875,
+     "invalidation": 4481.678485522476,
+     "atr": 3.79,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "3b8dfacd3c8c",
+      "direction": "DOWN",
+      "trigger": 4478.7998046875,
+      "invalidation": 4481.678485522476,
+      "atr": 3.786808349756076,
+      "triggered_at": "2026-09-01T05:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-01T05:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.2998046875,
+        "mae": 0.2001953125,
+        "close_move": 3.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.89990234375,
+        "mae": 13.400390625,
+        "close_move": -13.400390625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 6.89990234375,
+        "mae": 15.900390625,
+        "close_move": -2.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 6.89990234375,
+        "mae": 15.900390625,
+        "close_move": -2.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 51,
+        "mfe": 64.2998046875,
+        "mae": 15.900390625,
+        "close_move": 57.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-01T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-01",
+     "decision_ist": "11:40",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4483.89990234375,
+     "invalidation": 4487.664620684475,
+     "atr": 4.64,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "bf9211667916",
+      "direction": "DOWN",
+      "trigger": 4483.89990234375,
+      "invalidation": 4487.664620684475,
+      "atr": 4.644253719750282,
+      "triggered_at": "2026-09-01T06:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.60009765625,
+        "mae": 0.0,
+        "close_move": 6.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.60009765625,
+        "mae": 0.0,
+        "close_move": 0.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.60009765625,
+        "mae": 0.2001953125,
+        "close_move": 2.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 45.5,
+        "mae": 0.2001953125,
+        "close_move": 29.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 39,
+        "mfe": 69.39990234375,
+        "mae": 0.2001953125,
+        "close_move": 62.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-01T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-02",
+     "decision_ist": "12:20",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4363.10009765625,
+     "invalidation": 4371.9735003143805,
+     "atr": 5.74,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "3256ee9bf69d",
+      "direction": "DOWN",
+      "trigger": 4363.10009765625,
+      "invalidation": 4371.9735003143805,
+      "atr": 5.735979706305221,
+      "triggered_at": "2026-09-02T06:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-02T07:05:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 0.60009765625,
+        "mae": 10.5,
+        "close_move": -9.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 0.60009765625,
+        "mae": 14.69970703125,
+        "close_move": -12.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 0.60009765625,
+        "mae": 14.69970703125,
+        "close_move": -5.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 3.60009765625,
+        "mae": 15.2998046875,
+        "close_move": 2.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 31,
+        "mfe": 10.80029296875,
+        "mae": 15.2998046875,
+        "close_move": 7.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-02T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-02",
+     "decision_ist": "13:15",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4368.5,
+     "invalidation": 4374.120651777518,
+     "atr": 5.21,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ce451d7f83b2",
+      "direction": "DOWN",
+      "trigger": 4368.5,
+      "invalidation": 4374.120651777518,
+      "atr": 5.205541212679037,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-02T08:00:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-02",
+     "decision_ist": "14:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4369.2001953125,
+     "invalidation": 4372.975189270231,
+     "atr": 4.75,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "40c1f00ee268",
+      "direction": "DOWN",
+      "trigger": 4369.2001953125,
+      "invalidation": 4372.975189270231,
+      "atr": 4.751892702310749,
+      "triggered_at": "2026-09-02T08:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-02T11:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.2001953125,
+        "mae": 4.0,
+        "close_move": 1.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 10.10009765625,
+        "mae": 4.0,
+        "close_move": 6.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 16.900390625,
+        "mae": 4.0,
+        "close_move": 12.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 20.10009765625,
+        "mae": 4.0,
+        "close_move": 12.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 11,
+        "mfe": 16.900390625,
+        "mae": 4.0,
+        "close_move": 13.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-02T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-03",
+     "decision_ist": "09:40",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4479.39990234375,
+     "invalidation": 4470.325454816409,
+     "atr": 4.74,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "d512fec2960a",
+      "direction": "UP",
+      "trigger": 4479.39990234375,
+      "invalidation": 4470.325454816409,
+      "atr": 4.74349871091612,
+      "triggered_at": "2026-09-03T04:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-03T06:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.30029296875,
+        "mae": 0.0,
+        "close_move": 3.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.5,
+        "mae": 0.0,
+        "close_move": 3.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 6.60009765625,
+        "mae": 11.19970703125,
+        "close_move": -8.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 6.60009765625,
+        "mae": 16.60009765625,
+        "close_move": -11.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 60,
+        "mfe": 10.60009765625,
+        "mae": 16.60009765625,
+        "close_move": 2.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-03T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-03",
+     "decision_ist": "11:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4479.5,
+     "invalidation": 4467.841218449436,
+     "atr": 4.59,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "fbc08f736cfb",
+      "direction": "UP",
+      "trigger": 4479.5,
+      "invalidation": 4467.841218449436,
+      "atr": 4.585862380632416,
+      "triggered_at": "2026-09-03T05:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-03T06:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.7998046875,
+        "mae": 5.10009765625,
+        "close_move": -3.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.7998046875,
+        "mae": 9.0,
+        "close_move": -7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.7998046875,
+        "mae": 16.7001953125,
+        "close_move": -7.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 5.7998046875,
+        "mae": 16.7001953125,
+        "close_move": -7.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 44,
+        "mfe": 10.5,
+        "mae": 16.7001953125,
+        "close_move": 2.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-03T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-03",
+     "decision_ist": "11:40",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4482.2001953125,
+     "invalidation": 4475.363994911438,
+     "atr": 5.36,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a25c38aabc22",
+      "direction": "UP",
+      "trigger": 4482.2001953125,
+      "invalidation": 4475.363994911438,
+      "atr": 5.359074323127032,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-03T06:10:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-04",
+     "decision_ist": "10:50",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4521.60009765625,
+     "invalidation": 4514.584269941106,
+     "atr": 3.16,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "8937ace28778",
+      "direction": "UP",
+      "trigger": 4521.60009765625,
+      "invalidation": 4514.584269941106,
+      "atr": 3.156324026439076,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-04T05:25:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-08",
+     "decision_ist": "09:55",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4478.39990234375,
+     "invalidation": 4484.959095544638,
+     "atr": 3.59,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "960ccb54da23",
+      "direction": "DOWN",
+      "trigger": 4478.39990234375,
+      "invalidation": 4484.959095544638,
+      "atr": 3.5899788838865834,
+      "triggered_at": "2026-09-08T04:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 0.5,
+        "mae": 3.7001953125,
+        "close_move": -3.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 0.5,
+        "mae": 7.10009765625,
+        "close_move": -3.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 13.10009765625,
+        "mae": 7.10009765625,
+        "close_move": 12.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 34.69970703125,
+        "mae": 7.10009765625,
+        "close_move": 33.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 60,
+        "mfe": 46.39990234375,
+        "mae": 7.10009765625,
+        "close_move": 41.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-08T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-08",
+     "decision_ist": "10:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4479.7998046875,
+     "invalidation": 4483.726735863722,
+     "atr": 3.27,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a8af30db1382",
+      "direction": "DOWN",
+      "trigger": 4479.7998046875,
+      "invalidation": 4483.726735863722,
+      "atr": 3.2683351997167525,
+      "triggered_at": "2026-09-08T05:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.599609375,
+        "mae": 0.0,
+        "close_move": 9.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 16.89990234375,
+        "mae": 0.0,
+        "close_move": 7.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 23.89990234375,
+        "mae": 0.0,
+        "close_move": 21.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 37.19970703125,
+        "mae": 0.0,
+        "close_move": 28.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 52,
+        "mfe": 47.7998046875,
+        "mae": 0.0,
+        "close_move": 42.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-08T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-08",
+     "decision_ist": "11:20",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4468.2001953125,
+     "invalidation": 4474.316687611278,
+     "atr": 4.17,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a9f5a7b0fa62",
+      "direction": "DOWN",
+      "trigger": 4468.2001953125,
+      "invalidation": 4474.316687611278,
+      "atr": 4.16785267528502,
+      "triggered_at": "2026-09-08T05:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 12.30029296875,
+        "mae": 0.0,
+        "close_move": 9.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 23.0,
+        "mae": 0.0,
+        "close_move": 19.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 25.60009765625,
+        "mae": 0.0,
+        "close_move": 18.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 33.60009765625,
+        "mae": 0.0,
+        "close_move": 32.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 43,
+        "mfe": 36.2001953125,
+        "mae": 0.0,
+        "close_move": 30.900390625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-08T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-09",
+     "decision_ist": "09:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4418.2001953125,
+     "invalidation": 4420.040949200639,
+     "atr": 3.41,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b705682147fb",
+      "direction": "DOWN",
+      "trigger": 4418.2001953125,
+      "invalidation": 4420.040949200639,
+      "atr": 3.407538881388228,
+      "triggered_at": "2026-09-09T04:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-09T04:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.0,
+        "mae": 2.7998046875,
+        "close_move": -2.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.0,
+        "mae": 6.099609375,
+        "close_move": -3.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 4.0,
+        "mae": 10.599609375,
+        "close_move": -10.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 4.0,
+        "mae": 30.599609375,
+        "close_move": -25.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 64,
+        "mfe": 4.0,
+        "mae": 38.099609375,
+        "close_move": -24.2998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-09T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-10",
+     "decision_ist": "09:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4455.89990234375,
+     "invalidation": 4451.718167284678,
+     "atr": 3.82,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "0ad7b71f9798",
+      "direction": "UP",
+      "trigger": 4455.89990234375,
+      "invalidation": 4451.718167284678,
+      "atr": 3.8193037157138616,
+      "triggered_at": "2026-09-10T04:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-10T04:35:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.5,
+        "mae": 2.0,
+        "close_move": -1.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.5,
+        "mae": 7.5,
+        "close_move": -6.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.7001953125,
+        "mae": 7.5,
+        "close_move": 5.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 24.0,
+        "mae": 7.5,
+        "close_move": 4.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 63,
+        "mfe": 24.0,
+        "mae": 23.60009765625,
+        "close_move": -20.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-10T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-10",
+     "decision_ist": "10:40",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4457.7001953125,
+     "invalidation": 4451.1396861069925,
+     "atr": 3.6,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "2e64f3726a0f",
+      "direction": "UP",
+      "trigger": 4457.7001953125,
+      "invalidation": 4451.1396861069925,
+      "atr": 3.6031389300737717,
+      "triggered_at": "2026-09-10T05:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-10T07:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 6.099609375,
+        "mae": 0.0,
+        "close_move": 5.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 15.19970703125,
+        "mae": 0.0,
+        "close_move": 13.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 22.19970703125,
+        "mae": 0.0,
+        "close_move": 2.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 22.19970703125,
+        "mae": 3.30029296875,
+        "close_move": -0.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 51,
+        "mfe": 22.19970703125,
+        "mae": 25.400390625,
+        "close_move": -22.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-10T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-10",
+     "decision_ist": "12:15",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4470.60009765625,
+     "invalidation": 4461.3800204313775,
+     "atr": 5.2,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a87eaa99cf27",
+      "direction": "UP",
+      "trigger": 4470.60009765625,
+      "invalidation": 4461.3800204313775,
+      "atr": 5.198819123726722,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-10T07:00:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-14",
+     "decision_ist": "10:40",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4369.10009765625,
+     "invalidation": 4372.902635239815,
+     "atr": 4.03,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "886d7756a0c5",
+      "direction": "DOWN",
+      "trigger": 4369.10009765625,
+      "invalidation": 4372.902635239815,
+      "atr": 4.026352398149909,
+      "triggered_at": "2026-09-14T05:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-14T05:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.7001953125,
+        "mae": 8.2998046875,
+        "close_move": -6.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.60009765625,
+        "mae": 8.2998046875,
+        "close_move": -5.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.60009765625,
+        "mae": 10.19970703125,
+        "close_move": -0.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 11.2001953125,
+        "mae": 10.19970703125,
+        "close_move": 9.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 49,
+        "mfe": 49.0,
+        "mae": 10.19970703125,
+        "close_move": 41.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-14T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-14",
+     "decision_ist": "11:20",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4365.5,
+     "invalidation": 4374.707381073934,
+     "atr": 5.07,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "69d5b4654837",
+      "direction": "DOWN",
+      "trigger": 4365.5,
+      "invalidation": 4374.707381073934,
+      "atr": 5.071857614338978,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-14T05:50:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-14",
+     "decision_ist": "11:55",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4367.39990234375,
+     "invalidation": 4372.52564776521,
+     "atr": 5.26,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "7f1477d77fe2",
+      "direction": "DOWN",
+      "trigger": 4367.39990234375,
+      "invalidation": 4372.52564776521,
+      "atr": 5.256477652102134,
+      "triggered_at": "2026-09-14T06:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.5,
+        "mae": 0.0,
+        "close_move": 5.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.5,
+        "mae": 0.0,
+        "close_move": 3.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 11.69970703125,
+        "mae": 0.0,
+        "close_move": 9.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 20.60009765625,
+        "mae": 0.0,
+        "close_move": 18.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 32,
+        "mfe": 47.2998046875,
+        "mae": 0.0,
+        "close_move": 39.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-14T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-15",
+     "decision_ist": "12:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4329.5,
+     "invalidation": 4336.089494056278,
+     "atr": 3.89,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b1d4a04b6180",
+      "direction": "DOWN",
+      "trigger": 4329.5,
+      "invalidation": 4336.089494056278,
+      "atr": 3.8929874377822933,
+      "triggered_at": "2026-09-15T07:10:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 1.60009765625,
+        "mae": 3.10009765625,
+        "close_move": -2.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 8.89990234375,
+        "mae": 3.7998046875,
+        "close_move": 5.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 25.5,
+        "mae": 3.7998046875,
+        "close_move": 21.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 27.7998046875,
+        "mae": 3.7998046875,
+        "close_move": 23.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 27,
+        "mfe": 27.89990234375,
+        "mae": 3.7998046875,
+        "close_move": 22.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-15T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-15",
+     "decision_ist": "13:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4330.39990234375,
+     "invalidation": 4333.691825875912,
+     "atr": 3.92,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a1a9f7ec615a",
+      "direction": "DOWN",
+      "trigger": 4330.39990234375,
+      "invalidation": 4333.691825875912,
+      "atr": 3.9202118841226907,
+      "triggered_at": "2026-09-15T07:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 13.60009765625,
+        "mae": 0.39990234375,
+        "close_move": 12.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 25.89990234375,
+        "mae": 0.39990234375,
+        "close_move": 24.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 26.39990234375,
+        "mae": 0.39990234375,
+        "close_move": 19.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 28.7998046875,
+        "mae": 0.39990234375,
+        "close_move": 21.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 22,
+        "mfe": 28.7998046875,
+        "mae": 0.39990234375,
+        "close_move": 23.2998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-15T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-16",
+     "decision_ist": "10:40",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4365.2998046875,
+     "invalidation": 4362.761764098468,
+     "atr": 3.38,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "29f0d73ee1ce",
+      "direction": "UP",
+      "trigger": 4365.2998046875,
+      "invalidation": 4362.761764098468,
+      "atr": 3.383335577820514,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-16T05:10:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-16",
+     "decision_ist": "11:45",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4367.60009765625,
+     "invalidation": 4363.8838350083315,
+     "atr": 4.16,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ed53b37620dd",
+      "direction": "UP",
+      "trigger": 4367.60009765625,
+      "invalidation": 4363.8838350083315,
+      "atr": 4.159696791686798,
+      "triggered_at": "2026-09-16T06:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 0.5,
+        "mae": 3.60009765625,
+        "close_move": -1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 3.10009765625,
+        "mae": 3.60009765625,
+        "close_move": 0.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.39990234375,
+        "mae": 3.60009765625,
+        "close_move": 7.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 11.5,
+        "mae": 5.0,
+        "close_move": 7.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 37,
+        "mfe": 11.5,
+        "mae": 5.0,
+        "close_move": 3.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-16T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-16",
+     "decision_ist": "12:15",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4368.39990234375,
+     "invalidation": 4364.125894320748,
+     "atr": 3.74,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "2c9e923a5342",
+      "direction": "UP",
+      "trigger": 4368.39990234375,
+      "invalidation": 4364.125894320748,
+      "atr": 3.7410567925220586,
+      "triggered_at": "2026-09-16T06:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.80029296875,
+        "mae": 0.0,
+        "close_move": 5.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.60009765625,
+        "mae": 0.0,
+        "close_move": 6.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 10.7001953125,
+        "mae": 0.0,
+        "close_move": 0.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 10.7001953125,
+        "mae": 5.7998046875,
+        "close_move": 1.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 31,
+        "mfe": 10.7001953125,
+        "mae": 5.7998046875,
+        "close_move": 2.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-16T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-17",
+     "decision_ist": "09:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4323.0,
+     "invalidation": 4325.579168845302,
+     "atr": 5.79,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "28a4863e4c01",
+      "direction": "DOWN",
+      "trigger": 4323.0,
+      "invalidation": 4325.579168845302,
+      "atr": 5.791688453017038,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-17T03:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-17",
+     "decision_ist": "10:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4329.39990234375,
+     "invalidation": 4333.033025369653,
+     "atr": 4.33,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "08429d01686e",
+      "direction": "DOWN",
+      "trigger": 4329.39990234375,
+      "invalidation": 4333.033025369653,
+      "atr": 4.3292771340303355,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-17T04:35:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-17",
+     "decision_ist": "10:45",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4332.60009765625,
+     "invalidation": 4336.267064919539,
+     "atr": 3.67,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "8aa1b52e21f2",
+      "direction": "DOWN",
+      "trigger": 4332.60009765625,
+      "invalidation": 4336.267064919539,
+      "atr": 3.671625757884954,
+      "triggered_at": "2026-09-17T05:15:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-17T05:50:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 8.89990234375,
+        "mae": 2.69970703125,
+        "close_move": -0.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 8.89990234375,
+        "mae": 5.0,
+        "close_move": -3.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 8.89990234375,
+        "mae": 18.39990234375,
+        "close_move": -13.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 8.89990234375,
+        "mae": 35.69970703125,
+        "close_move": -30.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 50,
+        "mfe": 8.89990234375,
+        "mae": 41.7998046875,
+        "close_move": -12.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-17T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-18",
+     "decision_ist": "09:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4389.2001953125,
+     "invalidation": 4378.23227855294,
+     "atr": 5.68,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b5cc8c44fdec",
+      "direction": "UP",
+      "trigger": 4389.2001953125,
+      "invalidation": 4378.23227855294,
+      "atr": 5.675261345591188,
+      "triggered_at": "2026-09-18T03:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.89990234375,
+        "mae": 0.0,
+        "close_move": 8.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 11.39990234375,
+        "mae": 0.0,
+        "close_move": 9.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 11.39990234375,
+        "mae": 0.0,
+        "close_move": 9.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 23.7998046875,
+        "mae": 0.0,
+        "close_move": 23.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 70,
+        "mfe": 50.599609375,
+        "mae": 0.0,
+        "close_move": 38.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-18T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-18",
+     "decision_ist": "09:55",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4395.5,
+     "invalidation": 4391.335996984185,
+     "atr": 4.64,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "aac78d3dabea",
+      "direction": "UP",
+      "trigger": 4395.5,
+      "invalidation": 4391.335996984185,
+      "atr": 4.638077033152604,
+      "triggered_at": "2026-09-18T04:25:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.5,
+        "mae": 0.0,
+        "close_move": 8.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 11.39990234375,
+        "mae": 0.0,
+        "close_move": 10.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 13.7998046875,
+        "mae": 0.0,
+        "close_move": 8.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 38.2001953125,
+        "mae": 0.0,
+        "close_move": 36.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 60,
+        "mfe": 44.2998046875,
+        "mae": 0.0,
+        "close_move": 32.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-18T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-18",
+     "decision_ist": "11:10",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4413.0,
+     "invalidation": 4402.11160334835,
+     "atr": 4.88,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "27bdbe2c5d12",
+      "direction": "UP",
+      "trigger": 4413.0,
+      "invalidation": 4402.11160334835,
+      "atr": 4.884943079000282,
+      "triggered_at": "2026-09-18T05:40:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-18T12:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.7001953125,
+        "mae": 2.89990234375,
+        "close_move": 3.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 17.2001953125,
+        "mae": 2.89990234375,
+        "close_move": 15.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 23.60009765625,
+        "mae": 2.89990234375,
+        "close_move": 23.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 24.39990234375,
+        "mae": 2.89990234375,
+        "close_move": 20.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 45,
+        "mfe": 26.7998046875,
+        "mae": 2.89990234375,
+        "close_move": 15.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-18T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-21",
+     "decision_ist": "10:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4399.0,
+     "invalidation": 4403.111958777943,
+     "atr": 4.12,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "bd4539447df3",
+      "direction": "DOWN",
+      "trigger": 4399.0,
+      "invalidation": 4403.111958777943,
+      "atr": 4.1176346544347,
+      "triggered_at": "2026-09-21T04:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-21T11:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.5,
+        "mae": 1.7001953125,
+        "close_move": 4.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 8.0,
+        "mae": 1.7001953125,
+        "close_move": 6.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 9.7998046875,
+        "mae": 1.7001953125,
+        "close_move": 5.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 15.5,
+        "mae": 1.7001953125,
+        "close_move": 10.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 58,
+        "mfe": 20.0,
+        "mae": 1.7001953125,
+        "close_move": 15.2998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-21",
+     "decision_ist": "11:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4394.5,
+     "invalidation": 4398.677528445242,
+     "atr": 3.78,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a54278db8016",
+      "direction": "DOWN",
+      "trigger": 4394.5,
+      "invalidation": 4398.677528445242,
+      "atr": 3.777237577419713,
+      "triggered_at": "2026-09-21T05:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-21T11:35:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.0,
+        "mae": 0.7998046875,
+        "close_move": 6.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 8.2001953125,
+        "mae": 0.7998046875,
+        "close_move": 5.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 11.0,
+        "mae": 0.7998046875,
+        "close_move": 7.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 11.39990234375,
+        "mae": 0.7998046875,
+        "close_move": 4.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 47,
+        "mfe": 15.5,
+        "mae": 0.7998046875,
+        "close_move": 10.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-21",
+     "decision_ist": "11:45",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4388.7001953125,
+     "invalidation": 4393.539078228975,
+     "atr": 4.39,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "4a5d43e79adc",
+      "direction": "DOWN",
+      "trigger": 4388.7001953125,
+      "invalidation": 4393.539078228975,
+      "atr": 4.389805727250193,
+      "triggered_at": "2026-09-21T06:15:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-21T08:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.2001953125,
+        "mae": 0.0,
+        "close_move": 1.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.2001953125,
+        "mae": 3.599609375,
+        "close_move": -3.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.60009765625,
+        "mae": 5.0,
+        "close_move": -2.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 9.7001953125,
+        "mae": 5.0,
+        "close_move": -2.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 38,
+        "mfe": 9.7001953125,
+        "mae": 6.5,
+        "close_move": 5.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-21T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-22",
+     "decision_ist": "09:15",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4377.7998046875,
+     "invalidation": 4385.190785037357,
+     "atr": 4.91,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "9feaf00340e0",
+      "direction": "DOWN",
+      "trigger": 4377.7998046875,
+      "invalidation": 4385.190785037357,
+      "atr": 4.9058972485727095,
+      "triggered_at": "2026-09-22T04:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.2998046875,
+        "mae": 0.0,
+        "close_move": 4.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.2998046875,
+        "mae": 0.0,
+        "close_move": 4.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.2998046875,
+        "mae": 2.900390625,
+        "close_move": -2.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 25.099609375,
+        "mae": 6.400390625,
+        "close_move": 22.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 65,
+        "mfe": 50.19970703125,
+        "mae": 6.400390625,
+        "close_move": 26.599609375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-22T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-22",
+     "decision_ist": "10:15",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4375.2998046875,
+     "invalidation": 4377.8958693135855,
+     "atr": 3.96,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a51f59951b57",
+      "direction": "DOWN",
+      "trigger": 4375.2998046875,
+      "invalidation": 4377.8958693135855,
+      "atr": 3.9586931358584385,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-22T04:50:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-22",
+     "decision_ist": "10:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4375.7001953125,
+     "invalidation": 4383.902715150083,
+     "atr": 4.03,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "1bacdb65d5a5",
+      "direction": "DOWN",
+      "trigger": 4375.7001953125,
+      "invalidation": 4383.902715150083,
+      "atr": 4.027151500831341,
+      "triggered_at": "2026-09-22T05:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 23.0,
+        "mae": 0.0,
+        "close_move": 16.0,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 23.0,
+        "mae": 0.0,
+        "close_move": 11.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 23.900390625,
+        "mae": 0.0,
+        "close_move": 21.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 24.400390625,
+        "mae": 0.0,
+        "close_move": 17.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 49,
+        "mfe": 48.10009765625,
+        "mae": 0.0,
+        "close_move": 24.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-22T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-23",
+     "decision_ist": "10:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4382.5,
+     "invalidation": 4379.243305219344,
+     "atr": 2.57,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "67dee7a1b0be",
+      "direction": "UP",
+      "trigger": 4382.5,
+      "invalidation": 4379.243305219344,
+      "atr": 2.566947806561467,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-23T05:25:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-23",
+     "decision_ist": "14:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4355.7998046875,
+     "invalidation": 4360.1637123726605,
+     "atr": 3.64,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ad65e18a2687",
+      "direction": "DOWN",
+      "trigger": 4355.7998046875,
+      "invalidation": 4360.1637123726605,
+      "atr": 3.639076851603395,
+      "triggered_at": "2026-09-23T08:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.599609375,
+        "mae": 1.5,
+        "close_move": -0.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 3.599609375,
+        "mae": 1.5,
+        "close_move": 0.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.599609375,
+        "mae": 1.5,
+        "close_move": 4.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 10.5,
+        "mae": 1.5,
+        "close_move": 2.69970703125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 11,
+        "mfe": 3.599609375,
+        "mae": 1.5,
+        "close_move": 1.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-23T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-23",
+     "decision_ist": "14:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4352.2998046875,
+     "invalidation": 4357.235413484891,
+     "atr": 3.36,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "e28ba7fc1de5",
+      "direction": "DOWN",
+      "trigger": 4352.2998046875,
+      "invalidation": 4357.235413484891,
+      "atr": 3.355111411408761,
+      "triggered_at": "2026-09-23T09:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.0,
+        "mae": 1.30029296875,
+        "close_move": 6.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.0,
+        "mae": 3.60009765625,
+        "close_move": -2.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.0,
+        "mae": 3.7001953125,
+        "close_move": -0.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 14.7998046875,
+        "mae": 3.7001953125,
+        "close_move": 13.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 0,
+        "mfe": null,
+        "mae": null,
+        "close_move": null,
+        "complete": false
+       }
+      ],
+      "within_session_end": "2026-09-23T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-24",
+     "decision_ist": "09:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4320.2001953125,
+     "invalidation": 4323.951189361677,
+     "atr": 4.51,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "a5427103fd37",
+      "direction": "DOWN",
+      "trigger": 4320.2001953125,
+      "invalidation": 4323.951189361677,
+      "atr": 4.511893616773693,
+      "triggered_at": "2026-09-24T03:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-24T04:50:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.60009765625,
+        "mae": 0.7998046875,
+        "close_move": 1.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 4.60009765625,
+        "mae": 1.599609375,
+        "close_move": 1.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 4.60009765625,
+        "mae": 3.39990234375,
+        "close_move": -3.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 4.60009765625,
+        "mae": 11.0,
+        "close_move": 0.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 71,
+        "mfe": 30.900390625,
+        "mae": 11.0,
+        "close_move": 30.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-24T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-24",
+     "decision_ist": "09:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4316.39990234375,
+     "invalidation": 4322.213992395506,
+     "atr": 4.14,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "36e85875cdda",
+      "direction": "DOWN",
+      "trigger": 4316.39990234375,
+      "invalidation": 4322.213992395506,
+      "atr": 4.14187708005486,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-24T04:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-24",
+     "decision_ist": "11:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4319.60009765625,
+     "invalidation": 4326.057819569535,
+     "atr": 3.58,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "fa46548e6c42",
+      "direction": "DOWN",
+      "trigger": 4319.60009765625,
+      "invalidation": 4326.057819569535,
+      "atr": 3.5762425703513787,
+      "triggered_at": "2026-09-24T05:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.0,
+        "mae": 1.60009765625,
+        "close_move": 4.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.60009765625,
+        "mae": 1.60009765625,
+        "close_move": -1.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 9.39990234375,
+        "mae": 1.69970703125,
+        "close_move": 4.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 10.60009765625,
+        "mae": 3.39990234375,
+        "close_move": 0.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 46,
+        "mfe": 30.30029296875,
+        "mae": 3.39990234375,
+        "close_move": 30.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-24T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-25",
+     "decision_ist": "11:30",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4300.39990234375,
+     "invalidation": 4303.731480468095,
+     "atr": 4.32,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "6ba4896c9695",
+      "direction": "DOWN",
+      "trigger": 4300.39990234375,
+      "invalidation": 4303.731480468095,
+      "atr": 4.316757805943136,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-25T06:00:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-25",
+     "decision_ist": "12:40",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4314.2998046875,
+     "invalidation": 4308.76692616404,
+     "atr": 4.33,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "65a301168a39",
+      "direction": "UP",
+      "trigger": 4314.2998046875,
+      "invalidation": 4308.76692616404,
+      "atr": 4.332691484592843,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-25T07:15:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-25",
+     "decision_ist": "13:15",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4312.7998046875,
+     "invalidation": 4309.2598698198935,
+     "atr": 4.4,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "4365e12f5a54",
+      "direction": "UP",
+      "trigger": 4312.7998046875,
+      "invalidation": 4309.2598698198935,
+      "atr": 4.403254926067242,
+      "triggered_at": "2026-09-25T07:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.2001953125,
+        "mae": 2.7998046875,
+        "close_move": -2.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.60009765625,
+        "mae": 2.7998046875,
+        "close_move": 3.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 19.900390625,
+        "mae": 2.7998046875,
+        "close_move": 14.0,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 20.7001953125,
+        "mae": 2.7998046875,
+        "close_move": 15.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 20,
+        "mfe": 20.7001953125,
+        "mae": 2.7998046875,
+        "close_move": 13.400390625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-25T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-28",
+     "decision_ist": "10:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4229.0,
+     "invalidation": 4233.5081767110505,
+     "atr": 4.08,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b8c8ef66eb71",
+      "direction": "DOWN",
+      "trigger": 4229.0,
+      "invalidation": 4233.5081767110505,
+      "atr": 4.080790548007847,
+      "triggered_at": "2026-09-28T04:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 6.5,
+        "mae": 2.0,
+        "close_move": 3.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 11.2998046875,
+        "mae": 2.0,
+        "close_move": 9.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 16.89990234375,
+        "mae": 2.0,
+        "close_move": 13.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 32.0,
+        "mae": 2.0,
+        "close_move": 29.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 55,
+        "mfe": 56.2998046875,
+        "mae": 2.0,
+        "close_move": 50.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-28T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-29",
+     "decision_ist": "09:25",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4165.5,
+     "invalidation": 4168.491045660092,
+     "atr": 3.91,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "98b605c97d15",
+      "direction": "DOWN",
+      "trigger": 4165.5,
+      "invalidation": 4168.491045660092,
+      "atr": 3.9094800384218784,
+      "triggered_at": "2026-09-29T03:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-29T05:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 4.2001953125,
+        "mae": 0.10009765625,
+        "close_move": 2.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.7001953125,
+        "mae": 0.10009765625,
+        "close_move": 4.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 9.60009765625,
+        "mae": 0.10009765625,
+        "close_move": 7.2998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 12.39990234375,
+        "mae": 10.7001953125,
+        "close_move": -4.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 66,
+        "mfe": 12.39990234375,
+        "mae": 15.39990234375,
+        "close_move": -6.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-29T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-29",
+     "decision_ist": "10:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4157.39990234375,
+     "invalidation": 4163.5478842981765,
+     "atr": 3.48,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "624009210bd3",
+      "direction": "DOWN",
+      "trigger": 4157.39990234375,
+      "invalidation": 4163.5478842981765,
+      "atr": 3.4768898567643864,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": true,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-29",
+     "decision_ist": "10:45",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4157.89990234375,
+     "invalidation": 4161.314160614644,
+     "atr": 3.14,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "4fb1029a3991",
+      "direction": "DOWN",
+      "trigger": 4157.89990234375,
+      "invalidation": 4161.314160614644,
+      "atr": 3.141606146432772,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-29T05:15:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-30",
+     "decision_ist": "09:00",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4212.89990234375,
+     "invalidation": 4210.158398470612,
+     "atr": 3.42,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "d999cf22d904",
+      "direction": "UP",
+      "trigger": 4212.89990234375,
+      "invalidation": 4210.158398470612,
+      "atr": 3.4160152938772006,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-09-30T03:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-09-30",
+     "decision_ist": "09:50",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4210.10009765625,
+     "invalidation": 4205.864658203753,
+     "atr": 3.36,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c2b6b2deb1f2",
+      "direction": "UP",
+      "trigger": 4210.10009765625,
+      "invalidation": 4205.864658203753,
+      "atr": 3.355371087468653,
+      "triggered_at": "2026-09-30T04:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-30T05:10:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.2998046875,
+        "mae": 0.0,
+        "close_move": 0.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 7.2998046875,
+        "mae": 0.30029296875,
+        "close_move": 2.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 7.2998046875,
+        "mae": 12.5,
+        "close_move": -0.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 7.2998046875,
+        "mae": 12.5,
+        "close_move": 2.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 59,
+        "mfe": 23.89990234375,
+        "mae": 12.5,
+        "close_move": 7.19970703125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-30T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-09-30",
+     "decision_ist": "10:25",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4211.5,
+     "invalidation": 4209.488515097388,
+     "atr": 3.11,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "441cd5969613",
+      "direction": "UP",
+      "trigger": 4211.5,
+      "invalidation": 4209.488515097388,
+      "atr": 3.1128959011199795,
+      "triggered_at": "2026-09-30T05:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-09-30T05:05:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 1.2998046875,
+        "mae": 13.89990234375,
+        "close_move": -10.0,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 1.2998046875,
+        "mae": 13.89990234375,
+        "close_move": -1.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.5,
+        "mae": 13.89990234375,
+        "close_move": 2.5,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 15.5,
+        "mae": 13.89990234375,
+        "close_move": 14.0,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 53,
+        "mfe": 22.5,
+        "mae": 13.89990234375,
+        "close_move": 5.7998046875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-09-30T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-01",
+     "decision_ist": "14:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4188.7998046875,
+     "invalidation": 4192.258576128164,
+     "atr": 4.59,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "00827388010b",
+      "direction": "DOWN",
+      "trigger": 4188.7998046875,
+      "invalidation": 4192.258576128164,
+      "atr": 4.587714406644758,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": true,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-02",
+     "decision_ist": "11:30",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4217.10009765625,
+     "invalidation": 4213.243406638685,
+     "atr": 3.57,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "2d0a08d3b794",
+      "direction": "UP",
+      "trigger": 4217.10009765625,
+      "invalidation": 4213.243406638685,
+      "atr": 3.566910175653202,
+      "triggered_at": "2026-10-02T06:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-02T06:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.69970703125,
+        "mae": 0.2001953125,
+        "close_move": 0.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.69970703125,
+        "mae": 2.10009765625,
+        "close_move": -1.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 9.69970703125,
+        "mae": 9.7001953125,
+        "close_move": -6.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 9.69970703125,
+        "mae": 9.7001953125,
+        "close_move": 0.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 41,
+        "mfe": 9.69970703125,
+        "mae": 9.7001953125,
+        "close_move": -0.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-02T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-02",
+     "decision_ist": "12:45",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4217.7998046875,
+     "invalidation": 4210.069164365278,
+     "atr": 4.31,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "3fd4ac67b946",
+      "direction": "UP",
+      "trigger": 4217.7998046875,
+      "invalidation": 4210.069164365278,
+      "atr": 4.308356347223543,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": true,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-02",
+     "decision_ist": "13:25",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4215.5,
+     "invalidation": 4212.400041964039,
+     "atr": 4.0,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "f5085b58f882",
+      "direction": "UP",
+      "trigger": 4215.5,
+      "invalidation": 4212.400041964039,
+      "atr": 3.9976272346116404,
+      "triggered_at": "2026-10-02T07:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-02T08:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 11.10009765625,
+        "mae": 1.2001953125,
+        "close_move": 3.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 11.10009765625,
+        "mae": 3.2001953125,
+        "close_move": 0.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 11.10009765625,
+        "mae": 6.5,
+        "close_move": -1.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 11.10009765625,
+        "mae": 6.5,
+        "close_move": -1.5,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 18,
+        "mfe": 11.10009765625,
+        "mae": 6.5,
+        "close_move": 1.0,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-02T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-05",
+     "decision_ist": "09:25",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4171.60009765625,
+     "invalidation": 4174.275302955923,
+     "atr": 3.75,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "e18132b5e09b",
+      "direction": "DOWN",
+      "trigger": 4171.60009765625,
+      "invalidation": 4174.275302955923,
+      "atr": 3.7540061217274867,
+      "triggered_at": "2026-10-05T04:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-05T06:10:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 13.39990234375,
+        "mae": 0.0,
+        "close_move": 10.5,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 19.30029296875,
+        "mae": 0.0,
+        "close_move": 14.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 19.30029296875,
+        "mae": 0.0,
+        "close_move": 12.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 19.30029296875,
+        "mae": 0.7998046875,
+        "close_move": 1.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 65,
+        "mfe": 19.30029296875,
+        "mae": 27.2998046875,
+        "close_move": -22.89990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-05T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-05",
+     "decision_ist": "11:05",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4161.0,
+     "invalidation": 4165.0715109948715,
+     "atr": 3.71,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "14359a4e5177",
+      "direction": "DOWN",
+      "trigger": 4161.0,
+      "invalidation": 4165.0715109948715,
+      "atr": 3.713156823718377,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-05T05:40:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-06",
+     "decision_ist": "09:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4153.2001953125,
+     "invalidation": 4157.385385140793,
+     "atr": 4.85,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c78f1211c8a5",
+      "direction": "DOWN",
+      "trigger": 4153.2001953125,
+      "invalidation": 4157.385385140793,
+      "atr": 4.854827970430497,
+      "triggered_at": "2026-10-06T03:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-06T03:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.2001953125,
+        "mae": 7.599609375,
+        "close_move": -5.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.2001953125,
+        "mae": 7.599609375,
+        "close_move": -4.099609375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.2001953125,
+        "mae": 7.599609375,
+        "close_move": 0.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 6.60009765625,
+        "mae": 7.599609375,
+        "close_move": 2.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 71,
+        "mfe": 13.10009765625,
+        "mae": 31.89990234375,
+        "close_move": -30.89990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-06T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-06",
+     "decision_ist": "09:45",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4152.5,
+     "invalidation": 4157.86580630702,
+     "atr": 4.66,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "6d0ae95f6343",
+      "direction": "DOWN",
+      "trigger": 4152.5,
+      "invalidation": 4157.86580630702,
+      "atr": 4.659039632694984,
+      "triggered_at": "2026-10-06T04:35:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-06T06:20:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.7001953125,
+        "mae": 0.0,
+        "close_move": 1.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.7001953125,
+        "mae": 0.0,
+        "close_move": 3.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.89990234375,
+        "mae": 0.2998046875,
+        "close_move": 3.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 12.39990234375,
+        "mae": 10.10009765625,
+        "close_move": -6.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 58,
+        "mfe": 12.39990234375,
+        "mae": 32.60009765625,
+        "close_move": -31.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-06T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-06",
+     "decision_ist": "10:40",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4148.2001953125,
+     "invalidation": 4151.773675426172,
+     "atr": 3.74,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "6d89a7b8c392",
+      "direction": "DOWN",
+      "trigger": 4148.2001953125,
+      "invalidation": 4151.773675426172,
+      "atr": 3.737730824218794,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": true,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-07",
+     "decision_ist": "11:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4159.5,
+     "invalidation": 4161.982463603715,
+     "atr": 2.82,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b9216885c7b0",
+      "direction": "DOWN",
+      "trigger": 4159.5,
+      "invalidation": 4161.982463603715,
+      "atr": 2.8226829121427888,
+      "triggered_at": "2026-10-07T06:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-07T07:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 3.5,
+        "mae": 1.7001953125,
+        "close_move": 0.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 3.5,
+        "mae": 1.7001953125,
+        "close_move": 1.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.0,
+        "mae": 1.89990234375,
+        "close_move": -0.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 6.7998046875,
+        "mae": 6.2998046875,
+        "close_move": 6.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 37,
+        "mfe": 14.10009765625,
+        "mae": 6.2998046875,
+        "close_move": 13.10009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-07T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-07",
+     "decision_ist": "12:25",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4158.2001953125,
+     "invalidation": 4161.485804357709,
+     "atr": 2.86,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "9537e52600c8",
+      "direction": "DOWN",
+      "trigger": 4158.2001953125,
+      "invalidation": 4161.485804357709,
+      "atr": 2.8560904520867902,
+      "triggered_at": "2026-10-07T06:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-07T07:30:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 1.7001953125,
+        "mae": 3.19970703125,
+        "close_move": 0.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 3.7001953125,
+        "mae": 4.19970703125,
+        "close_move": -0.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 3.7001953125,
+        "mae": 7.599609375,
+        "close_move": -0.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 9.80029296875,
+        "mae": 7.599609375,
+        "close_move": 8.400390625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 30,
+        "mfe": 12.80029296875,
+        "mae": 7.599609375,
+        "close_move": 11.80029296875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-07T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-07",
+     "decision_ist": "13:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4158.7001953125,
+     "invalidation": 4162.715862120352,
+     "atr": 3.16,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "eaef991c5ae5",
+      "direction": "DOWN",
+      "trigger": 4158.7001953125,
+      "invalidation": 4162.715862120352,
+      "atr": 3.159597766016461,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-07T07:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-08",
+     "decision_ist": "10:00",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4160.0,
+     "invalidation": 4157.454298036455,
+     "atr": 3.46,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "684ca0a714b6",
+      "direction": "UP",
+      "trigger": 4160.0,
+      "invalidation": 4157.454298036455,
+      "atr": 3.455066510453892,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-08T04:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-08",
+     "decision_ist": "14:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4155.2001953125,
+     "invalidation": 4149.900732825764,
+     "atr": 3.99,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "0cdc7c321abf",
+      "direction": "UP",
+      "trigger": 4155.2001953125,
+      "invalidation": 4149.900732825764,
+      "atr": 3.990718617358226,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-08T09:10:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-09",
+     "decision_ist": "10:30",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4206.5,
+     "invalidation": 4201.20646771619,
+     "atr": 2.94,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "d123cba95714",
+      "direction": "UP",
+      "trigger": 4206.5,
+      "invalidation": 4201.20646771619,
+      "atr": 2.9353228381056935,
+      "triggered_at": "2026-10-09T05:00:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-09T11:05:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 9.60009765625,
+        "mae": 0.0,
+        "close_move": 9.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 19.5,
+        "mae": 0.0,
+        "close_move": 19.0,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 27.2001953125,
+        "mae": 0.0,
+        "close_move": 15.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 27.2001953125,
+        "mae": 0.0,
+        "close_move": 15.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 53,
+        "mfe": 27.2001953125,
+        "mae": 0.0,
+        "close_move": 4.89990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-09T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-09",
+     "decision_ist": "11:50",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4219.7001953125,
+     "invalidation": 4216.66585708385,
+     "atr": 4.34,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "e2367894ae0e",
+      "direction": "UP",
+      "trigger": 4219.7001953125,
+      "invalidation": 4216.66585708385,
+      "atr": 4.342405723997665,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-09T06:20:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-09",
+     "decision_ist": "12:25",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4220.10009765625,
+     "invalidation": 4216.30341492857,
+     "atr": 3.97,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "4e9e21501b6b",
+      "direction": "UP",
+      "trigger": 4220.10009765625,
+      "invalidation": 4216.30341492857,
+      "atr": 3.967803839298885,
+      "triggered_at": "2026-10-09T06:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-09T07:35:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.69970703125,
+        "mae": 2.0,
+        "close_move": -1.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.69970703125,
+        "mae": 4.80029296875,
+        "close_move": -0.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.69970703125,
+        "mae": 5.89990234375,
+        "close_move": -0.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 6.2998046875,
+        "mae": 8.10009765625,
+        "close_move": -7.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 30,
+        "mfe": 6.2998046875,
+        "mae": 10.7001953125,
+        "close_move": -8.7001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-09T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-12",
+     "decision_ist": "09:15",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4230.60009765625,
+     "invalidation": 4227.405101862857,
+     "atr": 3.95,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "282c926106a4",
+      "direction": "UP",
+      "trigger": 4230.60009765625,
+      "invalidation": 4227.405101862857,
+      "atr": 3.9470282464280966,
+      "triggered_at": "2026-10-12T03:45:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-12T03:55:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 0.60009765625,
+        "mae": 6.2001953125,
+        "close_move": -5.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 0.60009765625,
+        "mae": 8.60009765625,
+        "close_move": -7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 0.60009765625,
+        "mae": 10.80029296875,
+        "close_move": -9.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 0.60009765625,
+        "mae": 27.7001953125,
+        "close_move": -16.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 68,
+        "mfe": 0.60009765625,
+        "mae": 33.89990234375,
+        "close_move": -29.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-12T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-12",
+     "decision_ist": "14:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4198.5,
+     "invalidation": 4202.777597625597,
+     "atr": 2.78,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "3030313e6c41",
+      "direction": "DOWN",
+      "trigger": 4198.5,
+      "invalidation": 4202.777597625597,
+      "atr": 2.7759762559713637,
+      "triggered_at": "2026-10-12T09:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-12T10:25:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 6.0,
+        "mae": 0.60009765625,
+        "close_move": 3.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 6.0,
+        "mae": 0.60009765625,
+        "close_move": 0.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 6.0,
+        "mae": 5.7001953125,
+        "close_move": -5.39990234375,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 6.0,
+        "mae": 6.2998046875,
+        "close_move": 3.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 0,
+        "mfe": null,
+        "mae": null,
+        "close_move": null,
+        "complete": false
+       }
+      ],
+      "within_session_end": "2026-10-12T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-13",
+     "decision_ist": "11:05",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4221.10009765625,
+     "invalidation": 4216.064369229966,
+     "atr": 3.36,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "ade35e6da343",
+      "direction": "UP",
+      "trigger": 4221.10009765625,
+      "invalidation": 4216.064369229966,
+      "atr": 3.355331137837472,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-13T05:40:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-13",
+     "decision_ist": "12:20",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4215.60009765625,
+     "invalidation": 4209.457624238049,
+     "atr": 3.42,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "c643fff8b705",
+      "direction": "UP",
+      "trigger": 4215.60009765625,
+      "invalidation": 4209.457624238049,
+      "atr": 3.421804494506486,
+      "triggered_at": "2026-10-13T06:55:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-13T07:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 2.0,
+        "mae": 4.60009765625,
+        "close_move": -2.0,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 2.10009765625,
+        "mae": 4.60009765625,
+        "close_move": -1.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 2.10009765625,
+        "mae": 8.39990234375,
+        "close_move": -4.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 2.2998046875,
+        "mae": 8.39990234375,
+        "close_move": -5.2001953125,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 30,
+        "mfe": 2.2998046875,
+        "mae": 8.89990234375,
+        "close_move": -8.60009765625,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-13T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-13",
+     "decision_ist": "12:50",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4215.2998046875,
+     "invalidation": 4212.68153532459,
+     "atr": 3.18,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "62378cc6ffd7",
+      "direction": "UP",
+      "trigger": 4215.2998046875,
+      "invalidation": 4212.68153532459,
+      "atr": 3.1846467540950725,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-13T07:30:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-14",
+     "decision_ist": "09:35",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4183.60009765625,
+     "invalidation": 4185.820338829356,
+     "atr": 3.2,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "87093b346ab1",
+      "direction": "DOWN",
+      "trigger": 4183.60009765625,
+      "invalidation": 4185.820338829356,
+      "atr": 3.2033882935566997,
+      "triggered_at": "2026-10-14T04:05:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": "2026-10-14T04:40:00+00:00",
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.60009765625,
+        "mae": 0.2998046875,
+        "close_move": 1.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.60009765625,
+        "mae": 3.7998046875,
+        "close_move": -2.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.60009765625,
+        "mae": 6.7998046875,
+        "close_move": 1.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 15.10009765625,
+        "mae": 6.7998046875,
+        "close_move": 6.10009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 64,
+        "mfe": 19.89990234375,
+        "mae": 6.7998046875,
+        "close_move": 19.2001953125,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-14T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-14",
+     "decision_ist": "11:50",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4180.2001953125,
+     "invalidation": 4186.461376180647,
+     "atr": 4.61,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "2f6750fee27c",
+      "direction": "DOWN",
+      "trigger": 4180.2001953125,
+      "invalidation": 4186.461376180647,
+      "atr": 4.613761806466883,
+      "triggered_at": "2026-10-14T06:20:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.2001953125,
+        "mae": 0.0,
+        "close_move": 4.7001953125,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 11.900390625,
+        "mae": 0.0,
+        "close_move": 9.30029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 14.0,
+        "mae": 0.0,
+        "close_move": 12.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 14.7001953125,
+        "mae": 0.69970703125,
+        "close_move": 5.80029296875,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 37,
+        "mfe": 16.5,
+        "mae": 0.69970703125,
+        "close_move": 15.80029296875,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-14T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-14",
+     "decision_ist": "14:00",
+     "direction": "DOWN",
+     "entry_mode": "conditional",
+     "trigger": 4172.7998046875,
+     "invalidation": 4175.354562820663,
+     "atr": 3.55,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "64eafe66baee",
+      "direction": "DOWN",
+      "trigger": 4172.7998046875,
+      "invalidation": 4175.354562820663,
+      "atr": 3.5456282066335167,
+      "triggered_at": "2026-10-14T08:30:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 7.5,
+        "mae": 0.2001953125,
+        "close_move": 6.599609375,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 9.099609375,
+        "mae": 0.2001953125,
+        "close_move": 6.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 9.099609375,
+        "mae": 0.2001953125,
+        "close_move": 8.19970703125,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 10.19970703125,
+        "mae": 0.2001953125,
+        "close_move": 7.89990234375,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 11,
+        "mfe": 9.099609375,
+        "mae": 0.2001953125,
+        "close_move": 8.39990234375,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-14T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-16",
+     "decision_ist": "09:20",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4202.0,
+     "invalidation": 4186.625221379433,
+     "atr": 4.75,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "15408a4a695c",
+      "direction": "UP",
+      "trigger": 4202.0,
+      "invalidation": 4186.625221379433,
+      "atr": 4.748762768163992,
+      "triggered_at": "2026-10-16T03:50:00+00:00",
+      "invalidated_before_trigger_at": null,
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [
+       {
+        "horizon": "+15m",
+        "n_candles": 3,
+        "mfe": 5.89990234375,
+        "mae": 4.7998046875,
+        "close_move": -3.0,
+        "complete": true
+       },
+       {
+        "horizon": "+30m",
+        "n_candles": 6,
+        "mfe": 5.89990234375,
+        "mae": 5.0,
+        "close_move": -1.5,
+        "complete": true
+       },
+       {
+        "horizon": "+60m",
+        "n_candles": 12,
+        "mfe": 5.89990234375,
+        "mae": 8.5,
+        "close_move": -7.7998046875,
+        "complete": true
+       },
+       {
+        "horizon": "+120m",
+        "n_candles": 24,
+        "mfe": 5.89990234375,
+        "mae": 11.2998046875,
+        "close_move": -7.60009765625,
+        "complete": true
+       },
+       {
+        "horizon": "to_15:00_IST",
+        "n_candles": 67,
+        "mfe": 11.2998046875,
+        "mae": 12.2998046875,
+        "close_move": 1.5,
+        "complete": true
+       }
+      ],
+      "within_session_end": "2026-10-16T09:30:00+00:00"
+     }
+    },
+    {
+     "day": "2026-10-16",
+     "decision_ist": "10:35",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4197.2998046875,
+     "invalidation": 4195.119518987923,
+     "atr": 3.8,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "668ada8bf639",
+      "direction": "UP",
+      "trigger": 4197.2998046875,
+      "invalidation": 4195.119518987923,
+      "atr": 3.8048101207764966,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-16T05:05:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    },
+    {
+     "day": "2026-10-16",
+     "decision_ist": "11:30",
+     "direction": "UP",
+     "entry_mode": "conditional",
+     "trigger": 4198.2001953125,
+     "invalidation": 4193.528317405451,
+     "atr": 3.72,
+     "alert_age_min": 0.0,
+     "outcome": {
+      "setup_id": "b28da0e03e6f",
+      "direction": "UP",
+      "trigger": 4198.2001953125,
+      "invalidation": 4193.528317405451,
+      "atr": 3.715849382987813,
+      "triggered_at": null,
+      "invalidated_before_trigger_at": "2026-10-16T06:10:00+00:00",
+      "invalidated_after_trigger_at": null,
+      "expired": false,
+      "data_unavailable": false,
+      "excursions": [],
+      "within_session_end": null
+     }
+    }
+   ]
+  }
+ }
+}

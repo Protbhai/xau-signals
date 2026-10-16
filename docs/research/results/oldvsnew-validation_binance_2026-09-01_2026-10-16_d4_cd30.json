@@ -1,0 +1,104 @@
+{
+ "series": "binance",
+ "start": "2026-09-01",
+ "end": "2026-10-16",
+ "config": {
+  "cadence_minutes": 5,
+  "delay_minutes": 4.0,
+  "max_alerts": 3,
+  "cooldown_minutes": 30,
+  "spec": "SessionSpec(start=datetime.time(9, 0), end=datetime.time(15, 0))",
+  "stale_ext_atr": 1.0
+ },
+ "params": {
+  "name": "benchmark_v1",
+  "benchmark_v1": {
+   "bias_sma": 20,
+   "bias_lookback_slope": 3,
+   "setup_ema": 20,
+   "atr_period": 14,
+   "touch_tolerance_atr": 0.25,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1
+  },
+  "breakout_retest_v1": {
+   "range_minutes": 90,
+   "atr_period": 14,
+   "retest_tol_atr": 0.3,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1,
+   "min_range_atr": 1.0
+  },
+  "range_rejection_v1": {
+   "bias_sma": 20,
+   "bias_lookback_slope": 3,
+   "atr_period": 14,
+   "range_band_atr": 0.75,
+   "slope_atr": 0.25,
+   "lookback_bars": 36,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1
+  },
+  "benchmark_ext_v1": {
+   "bias_sma": 20,
+   "bias_lookback_slope": 3,
+   "setup_ema": 20,
+   "atr_period": 14,
+   "touch_tolerance_atr": 0.25,
+   "expiry_bars": 6,
+   "stale_extension_atr": 1.0,
+   "invalidation_buffer_atr": 0.1,
+   "max_ext_atr": 2.0
+  }
+ },
+ "results": {
+  "old_session_v1": {
+   "summary": {
+    "strategy": "old_session_v1@port-1.0",
+    "cadence_min": 5,
+    "delay_min": 4.0,
+    "session_days": 34,
+    "checks": 2448,
+    "states": {
+     "NO_SETUP": 2439,
+     "SETUP_FORMING": 7,
+     "SETUP_INVALIDATED": 2
+    },
+    "distinct_qualified_setups": 0,
+    "alerts_sent": 0,
+    "alerts_per_day_mean": 0,
+    "days_with_0_alerts": 34,
+    "days_with_3_alerts": 0,
+    "blocked": {},
+    "outcomes": {
+     "n": 0,
+     "triggered": 0,
+     "invalidated_before_trigger": 0,
+     "expired_untriggered": 0,
+     "unavailable": 0,
+     "invalidated_after_trigger": 0,
+     "+15m": {
+      "n": 0
+     },
+     "+30m": {
+      "n": 0
+     },
+     "+60m": {
+      "n": 0
+     },
+     "+120m": {
+      "n": 0
+     },
+     "to_15:00_IST": {
+      "n": 0
+     }
+    },
+    "seconds": 3.3
+   },
+   "alerts": []
+  }
+ }
+}
