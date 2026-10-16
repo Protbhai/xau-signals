@@ -25,10 +25,10 @@
 
 ## Unverified / open
 
-- Real scheduler cadence: GitHub cron fired 0 times in its first 17 min (probe continues over the
-  weekend); dispatch-to-run lag 97 s and 23 s observed. The external pinger (cron-job.org) still needs
-  the owner's fine-grained GitHub token in the job header.
-- Telegram delivery on the owner's phone: API confirmed; owner to confirm it arrived.
+- Real scheduler cadence: GitHub cron fired 0 times in its first 56 min (probe continues over the
+  weekend). The cron-job.org pinger is configured and VERIFIED (dispatch 17:35:32Z -> run start 17:35:45Z,
+  13 s). Owner to confirm its schedule is restricted to Mon-Fri 03:15-09:40 UTC (minutes budget).
+- Telegram: owner confirmed the test message arrived on the phone (16 Oct 22:49 IST).
 - Spot robustness check on Dukascopy (download throttled/503 on 16 Oct; retry slowly).
 - Holiday calendar in `config/closures.json` (research report pending; two dates placeholder).
 - Costs (spread/slippage) for the owner's broker: unverified; sensitivity only.
