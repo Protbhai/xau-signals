@@ -16,18 +16,15 @@ closures_file = "config/closures.json"
 #   binance    : XAUUSDT perp, keyless, real time; GEO-BLOCKED (HTTP 451) from US-hosted runners -> research only
 provider = "twelvedata"
 symbol = "XAU/USD"
+bias_interval = "1h"
+setup_interval = "5m"
+max_candle_age_seconds = 900         # newest completed 5m candle must close within 15 min of the check
+max_unexplained_gap_bars = 1
 [data.symbols]
 twelvedata = "XAU/USD"
 yahoo = "GC=F"
 binance = "XAUUSDT"
 
-[data.freshness]
-# (documented here; the engine reads the two keys below)
-[data]
-bias_interval = "1h"
-setup_interval = "5m"
-max_candle_age_seconds = 900         # newest completed 5m candle must close within 15 min of the check
-max_unexplained_gap_bars = 1
 
 [strategy]
 name = "benchmark_v1"

@@ -4,7 +4,7 @@
 name: probe
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/15 * * * *"   # weekend lag measurement; disable after the first week (minutes budget)
   workflow_dispatch:
 concurrency:
   group: probe

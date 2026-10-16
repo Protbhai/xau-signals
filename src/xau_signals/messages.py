@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime
 
 from .strategies.base import Evaluation, Setup
-from .timeutil import fmt_ist, to_ist
+from .timeutil import candle_close_time, fmt_ist, to_ist
 
 
 def _hm(dt: datetime) -> str:
@@ -16,8 +16,6 @@ def setup_alert(ev: Evaluation, setup: Setup, *, now: datetime, price_scope: str
     arrow = "⬆" if setup.direction == "UP" else "⬇"
     side = "above" if setup.direction == "UP" else "below"
     inv_side = "below" if setup.direction == "UP" else "above"
-    anchor_close = setup.anchor_ts.__class__  # noqa: F841 (keep linter calm about unused import paths)
-    from .timeutil import candle_close_time
     a_close = candle_close_time(setup.anchor_ts, setup_interval)
     lines = [
         f"<b>XAU/USD {arrow} {setup.direction} bias</b> — {setup.setup_type.replace('_', ' ')}",
