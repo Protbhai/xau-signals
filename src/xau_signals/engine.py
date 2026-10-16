@@ -67,6 +67,7 @@ def run_once(
     force_fetch: bool = False,
     strategy=None,
 ) -> RunSummary:
+    injected_clock = now is not None          # replay/tests inject time; live runs use a fresh clock at the gate
     now = to_utc(now or now_utc())
     run_id = uuid.uuid4().hex[:10]
     spec = SessionSpec.from_strings(settings.get("session", "start", "09:00"), settings.get("session", "end", "15:00"))
@@ -164,7 +165,7 @@ def run_once(
             sess.seen_setup_ids.append(setup.setup_id)
 
         # ---- gate (recheck session + freshness right before delivery) -------------
-        now2 = to_utc(now_utc()) if now is None else now  # in replay `now` is injected; live uses a fresh clock
+        now2 = now if injected_clock else to_utc(now_utc())   # recheck session + freshness against the clock right before sending
         g = gate.check(now=now2, sess=sess, setup_id=setup.setup_id, spec=spec, max_alerts=cap, cooldown=cooldown, data_fresh=data_fresh)
         if not g.allowed:
             summary.alert_action = f"blocked:{g.reason}"
