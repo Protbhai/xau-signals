@@ -1,0 +1,54 @@
+# Manual tools, run where the secrets live. Never print secrets (the logger redacts them).
+name: tools
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "notify-test | data-check"
+        type: choice
+        options: [notify-test, data-check]
+        required: true
+permissions:
+  contents: read
+jobs:
+  tool:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      XAU_TELEGRAM_BOT_TOKEN: ${{ secrets.XAU_TELEGRAM_BOT_TOKEN }}
+      XAU_TELEGRAM_CHAT_ID: ${{ secrets.XAU_TELEGRAM_CHAT_ID }}
+      XAU_TWELVEDATA_KEY: ${{ secrets.XAU_TWELVEDATA_KEY }}
+      XAU_MODE: paper
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q -e .
+      - if: inputs.task == 'notify-test'
+        run: python -m xau_signals notify-test
+      - if: inputs.task == 'data-check'
+        shell: bash
+        run: |
+          python - <<'EOF'
+          import sys, json
+          sys.path.insert(0, "src")
+          from datetime import timedelta
+          from xau_signals import market_hours; market_hours.load_closures("config/closures.json")
+          from xau_signals.providers.twelvedata import TwelveDataProvider
+          from xau_signals.candles import validate
+          from xau_signals.timeutil import now_utc
+          p = TwelveDataProvider()
+          now = now_utc()
+          for iv, n in (("5m", 60), ("1h", 40)):
+              cs = p.fetch(symbol="XAU/USD", interval=iv, lookback_bars=n)
+              out, rep = validate(cs, symbol="XAU/USD", interval=iv, now=now, max_age_seconds=900)
+              print(iv, "raw", len(cs), "forming", sum(1 for c in cs if not c.complete), "|", rep.summary())
+              for c in cs[-3:]:
+                  print("   ", c.ts_open.isoformat(), "O", c.open, "H", c.high, "L", c.low, "C", c.close, "V", c.volume, "complete", c.complete)
+              print("    now", now.isoformat(), "age of last raw open (s):", int((now - cs[-1].ts_open).total_seconds()))
+          # history depth probe: one call with outputsize 5000 at 5m
+          cs = p.fetch(symbol="XAU/USD", interval="5m", lookback_bars=5000)
+          print("5m outputsize=5000 ->", len(cs), "bars", cs[0].ts_open.isoformat() if cs else None, "->", cs[-1].ts_open.isoformat() if cs else None)
+          EOF
