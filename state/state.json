@@ -4,7 +4,7 @@
   "last_slot_lag_s": 54,
   "last_slot_run": "74ec8c72da"
  },
- "run_id": "b08d4a4cf2",
+ "run_id": "91924216ab",
  "runs": [
   {
    "alert_action": "none",
@@ -1730,6 +1730,19 @@
    "started_at": "2026-10-17T02:45:42.497063+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "91924216ab",
+   "started_at": "2026-10-17T02:50:44.245095+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -1754,5 +1767,5 @@
   ],
   "session_date": "2026-10-17"
  },
- "updated_at": "2026-10-17T02:45:42.497397+00:00"
+ "updated_at": "2026-10-17T02:50:44.245638+00:00"
 }
