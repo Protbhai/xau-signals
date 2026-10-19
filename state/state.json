@@ -4,21 +4,8 @@
   "last_slot_lag_s": 32,
   "last_slot_run": "7d55390c83"
  },
- "run_id": "a82b7d479b",
+ "run_id": "6803aaa97c",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": true,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "315ae46a66",
-   "started_at": "2026-10-18T09:20:45.086999+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5280,57 +5267,29 @@
    "started_at": "2026-10-19T18:25:36.453021+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "6803aaa97c",
+   "started_at": "2026-10-19T18:31:14.903770+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
  "session": {
-  "alerts": [
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-10-19T03:40:45.935237+00:00",
-    "sent_at": "2026-10-19T03:40:45.935237+00:00",
-    "setup_id": "2a5a48797ed0",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-10-19T04:35:37.278973+00:00",
-    "sent_at": "2026-10-19T04:35:37.278973+00:00",
-    "setup_id": "fd5dbde3086b",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-10-19T05:10:44.955756+00:00",
-    "sent_at": "2026-10-19T05:10:44.955756+00:00",
-    "setup_id": "83becc00981e",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   }
-  ],
+  "alerts": [],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-10-19T05:10:44.955756+00:00",
-  "seen_setup_ids": [
-   "2a5a48797ed0",
-   "fd5dbde3086b",
-   "d77c696dbf64",
-   "83becc00981e",
-   "74e3bff2e018",
-   "9f9621c730ce",
-   "0f99374cd3b2",
-   "a85d067a6811",
-   "f8a4af2929fd"
-  ],
-  "session_date": "2026-10-19"
+  "last_sent_at": null,
+  "seen_setup_ids": [],
+  "session_date": "2026-10-20"
  },
- "updated_at": "2026-10-19T18:25:36.453798+00:00"
+ "updated_at": "2026-10-19T18:31:14.904584+00:00"
 }
