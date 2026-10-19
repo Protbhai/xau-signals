@@ -4,21 +4,8 @@
   "last_slot_lag_s": 47,
   "last_slot_run": "b90040ec22"
  },
- "run_id": "b90040ec22",
+ "run_id": "99681bf101",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "ac7d6e31c2",
-   "started_at": "2026-10-17T23:35:35.406591+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5273,6 +5260,19 @@
     "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=3047s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=47s fresh=True"
    }
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "slot 1792399800 already handled by run b90040ec22"
+   ],
+   "run_id": "99681bf101",
+   "started_at": "2026-10-19T08:54:06.773957+00:00",
+   "state": "DUPLICATE_SLOT",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -5325,5 +5325,5 @@
   ],
   "session_date": "2026-10-19"
  },
- "updated_at": "2026-10-19T08:50:47.322583+00:00"
+ "updated_at": "2026-10-19T08:54:06.774999+00:00"
 }
