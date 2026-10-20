@@ -4,22 +4,8 @@
   "last_slot_lag_s": 40,
   "last_slot_run": "fbfd583ae9"
  },
- "run_id": "56a47a58e0",
+ "run_id": "12615d2ee3",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": true,
-   "in_session": true,
-   "notes": [],
-   "run_id": "21903cac45",
-   "started_at": "2026-10-19T09:15:48.827921+00:00",
-   "state": "NO_SETUP",
-   "validation": {
-    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=948s fresh=True",
-    "5m": "XAU/USD@5m: 60/60 candles age=48s fresh=True"
-   }
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5283,56 +5269,29 @@
    "started_at": "2026-10-20T18:25:38.652416+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "12615d2ee3",
+   "started_at": "2026-10-20T18:31:01.646197+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
  "session": {
-  "alerts": [
-   {
-    "direction": "DOWN",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-10-20T04:45:44.268186+00:00",
-    "sent_at": "2026-10-20T04:45:44.268186+00:00",
-    "setup_id": "6141456c3421",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "DOWN",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-10-20T05:10:42.769451+00:00",
-    "sent_at": "2026-10-20T05:10:42.769451+00:00",
-    "setup_id": "f472884d3629",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "DOWN",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-10-20T07:10:46.054523+00:00",
-    "sent_at": "2026-10-20T07:10:46.054523+00:00",
-    "setup_id": "de1ea4a8ecda",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   }
-  ],
+  "alerts": [],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-10-20T07:10:46.054523+00:00",
-  "seen_setup_ids": [
-   "6141456c3421",
-   "f472884d3629",
-   "de1ea4a8ecda",
-   "7257c8f07817",
-   "fd23e322e97d",
-   "2c6e0bb61bf3",
-   "9f83493a56b6",
-   "eca3c8db8a3c"
-  ],
-  "session_date": "2026-10-20"
+  "last_sent_at": null,
+  "seen_setup_ids": [],
+  "session_date": "2026-10-21"
  },
- "updated_at": "2026-10-20T18:25:38.653461+00:00"
+ "updated_at": "2026-10-20T18:31:01.647218+00:00"
 }
