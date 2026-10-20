@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -87,6 +88,9 @@ def cmd_status(args, settings: Settings, log):
     return 0
 
 
+OUTCOME_FETCH_GAP_S = 8
+
+
 def cmd_outcomes(args, settings: Settings, log):
     """Evaluate forward outcomes for recorded decisions whose expiry has passed and that lack an outcome."""
     from .outcomes import evaluate_outcome
@@ -108,7 +112,15 @@ def cmd_outcomes(args, settings: Settings, log):
             continue   # too early to judge within-session + 120m horizons
         setup = Setup(s["direction"], s["setup_type"], anchor, s["trigger"], s["zone_low"], s["zone_high"], s["invalidation"],
                       datetime.fromisoformat(s["expires_at"]), s["atr"], s.get("notes", ""))
-        later = provider.fetch(symbol=symbol, interval=iv, start=anchor, end=anchor + timedelta(hours=9))
+        if n:
+            time.sleep(OUTCOME_FETCH_GAP_S)   # free Twelve Data plan: 8 credits per minute
+        try:
+            later = provider.fetch(symbol=symbol, interval=iv, start=anchor, end=anchor + timedelta(hours=9))
+        except ProviderError as e:
+            if "API credits" not in str(e):
+                raise
+            print(json.dumps({"outcomes_written": n, "stopped": "rate limit; the rest are measured on the next run"}))
+            return 0
         oc = evaluate_outcome(setup, [c for c in later if c.complete])
         tracker.record_outcome({"evaluated_at": now, "decision_run_id": rec.get("run_id"), "mode": rec.get("mode"), **oc.to_dict()})
         done.add(s["setup_id"])
