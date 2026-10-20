@@ -1,24 +1,11 @@
 {
  "extra": {
-  "last_slot": 1792472700,
-  "last_slot_lag_s": 35,
-  "last_slot_run": "23df98659f"
+  "last_slot": 1792473000,
+  "last_slot_lag_s": 42,
+  "last_slot_run": "44e2b99c31"
  },
- "run_id": "23df98659f",
+ "run_id": "44e2b99c31",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "16fa7f8960",
-   "started_at": "2026-10-18T20:01:12.090008+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5303,6 +5290,20 @@
     "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=335s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=35s fresh=True"
    }
+  },
+  {
+   "alert_action": "paper",
+   "bias": "DOWN",
+   "fetched": true,
+   "in_session": true,
+   "notes": [],
+   "run_id": "44e2b99c31",
+   "started_at": "2026-10-20T05:10:42.643432+00:00",
+   "state": "SETUP_QUALIFIED",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=642s fresh=True",
+    "5m": "XAU/USD@5m: 60/60 candles age=42s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -5317,15 +5318,26 @@
     "setup_id": "6141456c3421",
     "setup_type": "pullback_continuation",
     "status": "sent"
+   },
+   {
+    "direction": "DOWN",
+    "error": "paper",
+    "message_id": null,
+    "reserved_at": "2026-10-20T05:10:42.769451+00:00",
+    "sent_at": "2026-10-20T05:10:42.769451+00:00",
+    "setup_id": "f472884d3629",
+    "setup_type": "pullback_continuation",
+    "status": "sent"
    }
   ],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-10-20T04:45:44.268186+00:00",
+  "last_sent_at": "2026-10-20T05:10:42.769451+00:00",
   "seen_setup_ids": [
-   "6141456c3421"
+   "6141456c3421",
+   "f472884d3629"
   ],
   "session_date": "2026-10-20"
  },
- "updated_at": "2026-10-20T05:05:35.838172+00:00"
+ "updated_at": "2026-10-20T05:10:43.311469+00:00"
 }
