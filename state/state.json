@@ -4,21 +4,8 @@
   "last_slot_lag_s": 31,
   "last_slot_run": "acb171a027"
  },
- "run_id": "a4f4ab6a92",
+ "run_id": "9c989bfc48",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": true,
-   "notes": [
-    "slot 1792658100 already handled by run e84448e4b4"
-   ],
-   "run_id": "87ab93b97a",
-   "started_at": "2026-10-22T08:37:45.653724+00:00",
-   "state": "DUPLICATE_SLOT",
-   "validation": {}
-  },
   {
    "alert_action": "blocked:daily cap reached (3)",
    "bias": "DOWN",
@@ -5290,6 +5277,19 @@
    "started_at": "2026-10-23T17:31:03.351271+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "9c989bfc48",
+   "started_at": "2026-10-23T17:35:30.266739+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -5346,5 +5346,5 @@
   ],
   "session_date": "2026-10-23"
  },
- "updated_at": "2026-10-23T17:31:03.351996+00:00"
+ "updated_at": "2026-10-23T17:35:30.267722+00:00"
 }
