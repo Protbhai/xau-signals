@@ -1,24 +1,11 @@
 {
  "extra": {
-  "last_slot": 1793087400,
-  "last_slot_lag_s": 40,
-  "last_slot_run": "b33a72c033"
+  "last_slot": 1793087700,
+  "last_slot_lag_s": 34,
+  "last_slot_run": "d2dedffe9f"
  },
- "run_id": "b33a72c033",
+ "run_id": "d2dedffe9f",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "c92703f6d6",
-   "started_at": "2026-10-25T22:40:39.056654+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5336,6 +5323,20 @@
     "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=3040s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=40s fresh=True"
    }
+  },
+  {
+   "alert_action": "paper",
+   "bias": "DOWN",
+   "fetched": true,
+   "in_session": true,
+   "notes": [],
+   "run_id": "d2dedffe9f",
+   "started_at": "2026-10-27T07:55:34.250205+00:00",
+   "state": "SETUP_QUALIFIED",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=3334s fresh=True",
+    "5m": "XAU/USD@5m: 60/60 candles age=34s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -5360,17 +5361,28 @@
     "setup_id": "75ab8f559204",
     "setup_type": "pullback_continuation",
     "status": "sent"
+   },
+   {
+    "direction": "DOWN",
+    "error": "paper",
+    "message_id": null,
+    "reserved_at": "2026-10-27T07:55:34.549290+00:00",
+    "sent_at": "2026-10-27T07:55:34.549290+00:00",
+    "setup_id": "907e43dd7722",
+    "setup_type": "pullback_continuation",
+    "status": "sent"
    }
   ],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-10-27T06:05:34.715644+00:00",
+  "last_sent_at": "2026-10-27T07:55:34.549290+00:00",
   "seen_setup_ids": [
    "ded5940a29b3",
    "75ab8f559204",
-   "e1b4b5ac6561"
+   "e1b4b5ac6561",
+   "907e43dd7722"
   ],
   "session_date": "2026-10-27"
  },
- "updated_at": "2026-10-27T07:50:40.705130+00:00"
+ "updated_at": "2026-10-27T07:55:35.264021+00:00"
 }
