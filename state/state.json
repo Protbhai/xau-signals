@@ -1,24 +1,11 @@
 {
  "extra": {
-  "last_slot": 1793080800,
-  "last_slot_lag_s": 70,
-  "last_slot_run": "b47a058b09"
+  "last_slot": 1793081100,
+  "last_slot_lag_s": 34,
+  "last_slot_run": "350a1c9721"
  },
- "run_id": "b47a058b09",
+ "run_id": "350a1c9721",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "59e33b2bf6",
-   "started_at": "2026-10-25T20:50:41.438319+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5314,6 +5301,20 @@
     "1h": "XAU/USD@1h: 33/33 candles age=70s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=70s fresh=True"
    }
+  },
+  {
+   "alert_action": "paper",
+   "bias": "DOWN",
+   "fetched": true,
+   "in_session": true,
+   "notes": [],
+   "run_id": "350a1c9721",
+   "started_at": "2026-10-27T06:05:34.502110+00:00",
+   "state": "SETUP_QUALIFIED",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=334s fresh=True",
+    "5m": "XAU/USD@5m: 60/60 candles age=34s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -5328,15 +5329,26 @@
     "setup_id": "ded5940a29b3",
     "setup_type": "pullback_continuation",
     "status": "sent"
+   },
+   {
+    "direction": "DOWN",
+    "error": "paper",
+    "message_id": null,
+    "reserved_at": "2026-10-27T06:05:34.715644+00:00",
+    "sent_at": "2026-10-27T06:05:34.715644+00:00",
+    "setup_id": "75ab8f559204",
+    "setup_type": "pullback_continuation",
+    "status": "sent"
    }
   ],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-10-27T04:01:14.646455+00:00",
+  "last_sent_at": "2026-10-27T06:05:34.715644+00:00",
   "seen_setup_ids": [
-   "ded5940a29b3"
+   "ded5940a29b3",
+   "75ab8f559204"
   ],
   "session_date": "2026-10-27"
  },
- "updated_at": "2026-10-27T06:01:10.756180+00:00"
+ "updated_at": "2026-10-27T06:05:35.295453+00:00"
 }
