@@ -1,24 +1,11 @@
 {
  "extra": {
-  "last_slot": 1793592000,
-  "last_slot_lag_s": 70,
-  "last_slot_run": "ae43e93b23"
+  "last_slot": 1793592300,
+  "last_slot_lag_s": 34,
+  "last_slot_run": "7b22c6bba8"
  },
- "run_id": "ae43e93b23",
+ "run_id": "7b22c6bba8",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "f77013cf79",
-   "started_at": "2026-10-31T18:45:45.102403+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5215,6 +5202,20 @@
     "1h": "XAU/USD@1h: 33/33 candles age=70s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=70s fresh=True"
    }
+  },
+  {
+   "alert_action": "paper",
+   "bias": "UP",
+   "fetched": true,
+   "in_session": true,
+   "notes": [],
+   "run_id": "7b22c6bba8",
+   "started_at": "2026-11-02T04:05:34.124315+00:00",
+   "state": "SETUP_QUALIFIED",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=334s fresh=True",
+    "5m": "XAU/USD@5m: 60/60 candles age=34s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -5229,16 +5230,27 @@
     "setup_id": "eddd7512a9e5",
     "setup_type": "pullback_continuation",
     "status": "sent"
+   },
+   {
+    "direction": "UP",
+    "error": "paper",
+    "message_id": null,
+    "reserved_at": "2026-11-02T04:05:34.367946+00:00",
+    "sent_at": "2026-11-02T04:05:34.367946+00:00",
+    "setup_id": "7453a14e78c6",
+    "setup_type": "pullback_continuation",
+    "status": "sent"
    }
   ],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-11-02T03:40:41.430186+00:00",
+  "last_sent_at": "2026-11-02T04:05:34.367946+00:00",
   "seen_setup_ids": [
    "eddd7512a9e5",
-   "5b8caf1d19d6"
+   "5b8caf1d19d6",
+   "7453a14e78c6"
   ],
   "session_date": "2026-11-02"
  },
- "updated_at": "2026-11-02T04:01:10.995839+00:00"
+ "updated_at": "2026-11-02T04:05:34.962997+00:00"
 }
