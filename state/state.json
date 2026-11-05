@@ -4,22 +4,8 @@
   "last_slot_lag_s": 43,
   "last_slot_run": "50b2ee3428"
  },
- "run_id": "b40b2a377f",
+ "run_id": "2887e9dd52",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "UP",
-   "fetched": true,
-   "in_session": true,
-   "notes": [],
-   "run_id": "5372294c49",
-   "started_at": "2026-11-04T09:10:45.085800+00:00",
-   "state": "NO_SETUP",
-   "validation": {
-    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=645s fresh=True",
-    "5m": "XAU/USD@5m: 60/60 candles age=45s fresh=True"
-   }
-  },
   {
    "alert_action": "none",
    "bias": "UP",
@@ -5283,63 +5269,29 @@
    "started_at": "2026-11-05T18:25:33.286504+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "2887e9dd52",
+   "started_at": "2026-11-05T18:31:04.435027+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
  "session": {
-  "alerts": [
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-11-05T03:55:33.842197+00:00",
-    "sent_at": "2026-11-05T03:55:33.842197+00:00",
-    "setup_id": "33a73b0a235a",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-11-05T04:40:40.721792+00:00",
-    "sent_at": "2026-11-05T04:40:40.721792+00:00",
-    "setup_id": "a8dbc261be33",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-11-05T05:01:12.176326+00:00",
-    "sent_at": "2026-11-05T05:01:12.176326+00:00",
-    "setup_id": "a2319cb6228f",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   }
-  ],
+  "alerts": [],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-11-05T05:01:12.176326+00:00",
-  "seen_setup_ids": [
-   "33a73b0a235a",
-   "da81685bf615",
-   "a8dbc261be33",
-   "a2319cb6228f",
-   "b78b0b244642",
-   "95ace8f8215c",
-   "f3211297a8b3",
-   "19157055662a",
-   "99660f8d040d",
-   "8c1c4228f7e8",
-   "8efb49039376",
-   "043a2d683a34",
-   "007424f9c2eb",
-   "dfd5c06e3e30",
-   "5dc35217469e"
-  ],
-  "session_date": "2026-11-05"
+  "last_sent_at": null,
+  "seen_setup_ids": [],
+  "session_date": "2026-11-06"
  },
- "updated_at": "2026-11-05T18:25:33.287076+00:00"
+ "updated_at": "2026-11-05T18:31:04.435571+00:00"
 }
