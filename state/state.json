@@ -1,24 +1,11 @@
 {
  "extra": {
-  "last_slot": 1793935200,
-  "last_slot_lag_s": 42,
-  "last_slot_run": "6c17b17f6d"
+  "last_slot": 1793935500,
+  "last_slot_lag_s": 31,
+  "last_slot_run": "1371f1872a"
  },
- "run_id": "6c17b17f6d",
+ "run_id": "1371f1872a",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "04372a4875",
-   "started_at": "2026-11-04T18:05:33.140859+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5281,6 +5268,20 @@
     "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=1242s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=42s fresh=True"
    }
+  },
+  {
+   "alert_action": "none",
+   "bias": "DOWN",
+   "fetched": true,
+   "in_session": false,
+   "notes": [],
+   "run_id": "1371f1872a",
+   "started_at": "2026-11-06T03:25:31.368349+00:00",
+   "state": "NO_SETUP",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=1531s fresh=True",
+    "5m": "XAU/USD@5m: 60/60 candles age=31s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -5292,5 +5293,5 @@
   "seen_setup_ids": [],
   "session_date": "2026-11-06"
  },
- "updated_at": "2026-11-06T03:20:42.865533+00:00"
+ "updated_at": "2026-11-06T03:25:31.493041+00:00"
 }
