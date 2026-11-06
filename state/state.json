@@ -1,24 +1,11 @@
 {
  "extra": {
-  "last_slot": 1793943600,
-  "last_slot_lag_s": 39,
-  "last_slot_run": "becdd0e649"
+  "last_slot": 1793943900,
+  "last_slot_lag_s": 153,
+  "last_slot_run": "c0c9407df3"
  },
- "run_id": "becdd0e649",
+ "run_id": "c0c9407df3",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "6964e64001",
-   "started_at": "2026-11-04T20:25:32.865342+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5309,6 +5296,20 @@
     "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=2439s fresh=True",
     "5m": "XAU/USD@5m: 60/60 candles age=39s fresh=True"
    }
+  },
+  {
+   "alert_action": "paper",
+   "bias": "DOWN",
+   "fetched": true,
+   "in_session": true,
+   "notes": [],
+   "run_id": "c0c9407df3",
+   "started_at": "2026-11-06T05:47:33.300514+00:00",
+   "state": "SETUP_QUALIFIED",
+   "validation": {
+    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=2853s fresh=True",
+    "5m": "XAU/USD@5m: 59/60 candles forming dropped=1 age=153s fresh=True"
+   }
   }
  ],
  "schema": 1,
@@ -5333,19 +5334,30 @@
     "setup_id": "e1a1b3d001f7",
     "setup_type": "pullback_continuation",
     "status": "sent"
+   },
+   {
+    "direction": "DOWN",
+    "error": "paper",
+    "message_id": null,
+    "reserved_at": "2026-11-06T05:47:33.526405+00:00",
+    "sent_at": "2026-11-06T05:47:33.526405+00:00",
+    "setup_id": "95e515b63d80",
+    "setup_type": "pullback_continuation",
+    "status": "sent"
    }
   ],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-11-06T05:20:45.748683+00:00",
+  "last_sent_at": "2026-11-06T05:47:33.526405+00:00",
   "seen_setup_ids": [
    "d90476ade2ec",
    "0512b1ea9dd8",
    "e1a1b3d001f7",
    "de5245d73238",
-   "eb747c3150d9"
+   "eb747c3150d9",
+   "95e515b63d80"
   ],
   "session_date": "2026-11-06"
  },
- "updated_at": "2026-11-06T05:40:39.801329+00:00"
+ "updated_at": "2026-11-06T05:47:34.106030+00:00"
 }
