@@ -4,22 +4,8 @@
   "last_slot_lag_s": 35,
   "last_slot_run": "6ef806fbe4"
  },
- "run_id": "79f1974fb6",
+ "run_id": "d157e7410b",
  "runs": [
-  {
-   "alert_action": "blocked:daily cap reached (3)",
-   "bias": "UP",
-   "fetched": true,
-   "in_session": true,
-   "notes": [],
-   "run_id": "e886f9d143",
-   "started_at": "2026-11-09T09:15:43.485761+00:00",
-   "state": "SETUP_QUALIFIED",
-   "validation": {
-    "1h": "XAU/USD@1h: 32/33 candles forming dropped=1 age=943s fresh=True",
-    "5m": "XAU/USD@5m: 60/60 candles age=43s fresh=True"
-   }
-  },
   {
    "alert_action": "none",
    "bias": "UP",
@@ -5283,29 +5269,29 @@
    "started_at": "2026-11-10T18:25:35.768718+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "d157e7410b",
+   "started_at": "2026-11-10T18:31:05.044099+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
  "session": {
-  "alerts": [
-   {
-    "direction": "UP",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-11-10T06:35:31.252540+00:00",
-    "sent_at": "2026-11-10T06:35:31.252540+00:00",
-    "setup_id": "7925c30bfb5b",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   }
-  ],
+  "alerts": [],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-11-10T06:35:31.252540+00:00",
-  "seen_setup_ids": [
-   "7925c30bfb5b"
-  ],
-  "session_date": "2026-11-10"
+  "last_sent_at": null,
+  "seen_setup_ids": [],
+  "session_date": "2026-11-11"
  },
- "updated_at": "2026-11-10T18:25:35.769718+00:00"
+ "updated_at": "2026-11-10T18:31:05.044829+00:00"
 }
