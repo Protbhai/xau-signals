@@ -4,8 +4,86 @@
   "last_slot_lag_s": 34,
   "last_slot_run": "478c6bff2a"
  },
- "run_id": "bea04e5f95",
+ "run_id": "16c2f5108a",
  "runs": [
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "9cd3f3d0f4",
+   "started_at": "2026-11-15T03:25:33.278259+00:00",
+   "state": "SKIPPED",
+   "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "1077b760df",
+   "started_at": "2026-11-15T03:31:00.501529+00:00",
+   "state": "SKIPPED",
+   "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "004e3ad834",
+   "started_at": "2026-11-15T03:35:33.022150+00:00",
+   "state": "SKIPPED",
+   "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "5468e97c66",
+   "started_at": "2026-11-15T03:40:55.842823+00:00",
+   "state": "SKIPPED",
+   "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "83862fbdbf",
+   "started_at": "2026-11-15T03:45:43.796678+00:00",
+   "state": "SKIPPED",
+   "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": true,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "1cb9739ef8",
+   "started_at": "2026-11-15T03:50:42.298069+00:00",
+   "state": "SKIPPED",
+   "validation": {}
+  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5197,86 +5275,8 @@
    "notes": [
     "outside session window (or market closed): no fetch, record only"
    ],
-   "run_id": "f666c2e4be",
-   "started_at": "2026-11-16T12:55:30.516394+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "0c611d1065",
-   "started_at": "2026-11-16T13:01:29.002647+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "52e07c5c59",
-   "started_at": "2026-11-16T13:05:32.764507+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "fbe50f1c7b",
-   "started_at": "2026-11-16T13:10:48.166479+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "78fb6fa9ac",
-   "started_at": "2026-11-16T13:15:45.594029+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "4bf7fbd3ee",
-   "started_at": "2026-11-16T13:20:41.790242+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "bea04e5f95",
-   "started_at": "2026-11-16T13:25:34.973327+00:00",
+   "run_id": "16c2f5108a",
+   "started_at": "2026-11-16T13:26:11.329613+00:00",
    "state": "SKIPPED",
    "validation": {}
   }
@@ -5331,5 +5331,5 @@
   ],
   "session_date": "2026-11-16"
  },
- "updated_at": "2026-11-16T13:25:34.974396+00:00"
+ "updated_at": "2026-11-16T13:26:11.330387+00:00"
 }
