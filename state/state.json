@@ -4,21 +4,8 @@
   "last_slot_lag_s": 34,
   "last_slot_run": "eed7dc5682"
  },
- "run_id": "0a3d100a38",
+ "run_id": "7a91443786",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "a46be5c591",
-   "started_at": "2026-11-17T02:40:41.415976+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5355,6 +5342,19 @@
    "started_at": "2026-11-18T11:43:59.419655+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "7a91443786",
+   "started_at": "2026-11-18T11:45:41.649582+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -5406,5 +5406,5 @@
   ],
   "session_date": "2026-11-18"
  },
- "updated_at": "2026-11-18T11:43:59.420542+00:00"
+ "updated_at": "2026-11-18T11:45:41.650164+00:00"
 }
