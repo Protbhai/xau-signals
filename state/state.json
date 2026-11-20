@@ -4,21 +4,8 @@
   "last_slot_lag_s": 38,
   "last_slot_run": "c0012f884d"
  },
- "run_id": "3124c159d1",
+ "run_id": "6592aa1dab",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "NONE",
-   "fetched": false,
-   "in_session": false,
-   "notes": [
-    "outside session window (or market closed): no fetch, record only"
-   ],
-   "run_id": "e0e414dc3a",
-   "started_at": "2026-11-19T09:31:05.582890+00:00",
-   "state": "SKIPPED",
-   "validation": {}
-  },
   {
    "alert_action": "none",
    "bias": "NONE",
@@ -5280,45 +5267,29 @@
    "started_at": "2026-11-20T18:25:38.424112+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "6592aa1dab",
+   "started_at": "2026-11-20T18:31:20.069442+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
  "session": {
-  "alerts": [
-   {
-    "direction": "DOWN",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-11-20T04:10:46.044595+00:00",
-    "sent_at": "2026-11-20T04:10:46.044595+00:00",
-    "setup_id": "559843355a60",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   },
-   {
-    "direction": "DOWN",
-    "error": "paper",
-    "message_id": null,
-    "reserved_at": "2026-11-20T07:25:30.886743+00:00",
-    "sent_at": "2026-11-20T07:25:30.886743+00:00",
-    "setup_id": "a096112f2cf6",
-    "setup_type": "pullback_continuation",
-    "status": "sent"
-   }
-  ],
+  "alerts": [],
   "consecutive_data_failures": 0,
   "failure_alert_sent_for": [],
-  "last_sent_at": "2026-11-20T07:25:30.886743+00:00",
-  "seen_setup_ids": [
-   "559843355a60",
-   "0a39f199f3ad",
-   "3a8ef4a5ffac",
-   "a096112f2cf6",
-   "caf60e1efb3b",
-   "6fe7ddd3fd29",
-   "909f13186a27"
-  ],
-  "session_date": "2026-11-20"
+  "last_sent_at": null,
+  "seen_setup_ids": [],
+  "session_date": "2026-11-21"
  },
- "updated_at": "2026-11-20T18:25:38.424939+00:00"
+ "updated_at": "2026-11-20T18:31:20.070126+00:00"
 }
