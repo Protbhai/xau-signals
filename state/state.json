@@ -4,22 +4,8 @@
   "last_slot_lag_s": 35,
   "last_slot_run": "845a607614"
  },
- "run_id": "cf67869f4b",
+ "run_id": "7f352db7c1",
  "runs": [
-  {
-   "alert_action": "none",
-   "bias": "DOWN",
-   "fetched": true,
-   "in_session": true,
-   "notes": [],
-   "run_id": "f3de000e72",
-   "started_at": "2026-11-25T08:01:09.836550+00:00",
-   "state": "SETUP_FORMING",
-   "validation": {
-    "1h": "XAU/USD@1h: 33/33 candles age=69s fresh=True",
-    "5m": "XAU/USD@5m: 60/60 candles age=69s fresh=True"
-   }
-  },
   {
    "alert_action": "blocked:daily cap reached (3)",
    "bias": "DOWN",
@@ -5298,6 +5284,19 @@
    "started_at": "2026-11-26T17:31:03.982793+00:00",
    "state": "SKIPPED",
    "validation": {}
+  },
+  {
+   "alert_action": "none",
+   "bias": "NONE",
+   "fetched": false,
+   "in_session": false,
+   "notes": [
+    "outside session window (or market closed): no fetch, record only"
+   ],
+   "run_id": "7f352db7c1",
+   "started_at": "2026-11-26T17:35:37.366315+00:00",
+   "state": "SKIPPED",
+   "validation": {}
   }
  ],
  "schema": 1,
@@ -5350,5 +5349,5 @@
   ],
   "session_date": "2026-11-26"
  },
- "updated_at": "2026-11-26T17:31:03.983377+00:00"
+ "updated_at": "2026-11-26T17:35:37.367209+00:00"
 }
